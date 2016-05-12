@@ -46,7 +46,7 @@ class ChartViewController: UIViewController {
     static var lowValue = "50"
     static var averageValue = "200"
     static var highValue = "400"
-    
+    var alert = SCLAlertView()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -122,15 +122,31 @@ class ChartViewController: UIViewController {
         let index = sender.tag
         let rating = self.ratingArray[index]
         
+        let appearance = SCLAlertView.SCLAppearance(
+            showCloseButton: false
+        )
+        
         // Initialize SCLAlertView using custom Appearance
-        let alert = SCLAlertView()
+        alert = SCLAlertView(appearance: appearance)
         
         // Creat the subview
-        let subview = UIView(frame: CGRectMake(0,0,220,170))
+        let subview = UIView(frame: CGRectMake(0,0,220,200))
+        
+        let closeBtnImage = UIImage(named: "close_btn.png") as UIImage!
+        let button   = UIButton(type: UIButtonType.Custom) as UIButton
+        button.frame = CGRectMake(195, 0, 20, 20)
+        button.backgroundColor = UIColor.clearColor()
+        button.setImage(closeBtnImage, forState: .Normal)
+        button.tintColor = UIColor.clearColor()
+        button.imageView?.tintColor = UIColor.clearColor()
+        button.addTarget(self, action: #selector(ChartViewController.closePopupBtnTapped), forControlEvents: UIControlEvents.TouchUpInside)
+        
+        subview.addSubview(button)
         
         let nameLabel = UILabel(frame: CGRectMake(10, 10, 80, 50))
         nameLabel.textAlignment = NSTextAlignment.Left
         nameLabel.textColor = UIColor.blackColor()
+        nameLabel.font = UIFont(name: (nameLabel.font?.fontName)!, size: 12)
         nameLabel.text = "Tire Name"
         subview.addSubview(nameLabel)
         
@@ -146,6 +162,7 @@ class ChartViewController: UIViewController {
         let priceLabel = UILabel(frame: CGRectMake(10, 60, 100, 30))
         priceLabel.textAlignment = NSTextAlignment.Left
         priceLabel.textColor = UIColor.blackColor()
+        priceLabel.font = UIFont(name: (priceLabel.font?.fontName)!, size: 12)
         priceLabel.text = "Tire Price"
         subview.addSubview(priceLabel)
         
@@ -154,36 +171,94 @@ class ChartViewController: UIViewController {
         priceValueLabel.textColor = UIColor.blackColor()
         let t_price = rating["t_price"] as! NSString!
         let quantityPrice = CGFloat(t_price.doubleValue) * CGFloat(self.quantity)
+        priceValueLabel.font = UIFont(name: (priceValueLabel.font?.fontName)!, size: 12)
         priceValueLabel.text = "$\(quantityPrice)"
         subview.addSubview(priceValueLabel)
         
         let mileageLabel = UILabel(frame: CGRectMake(10, 90, 100, 30))
         mileageLabel.textAlignment = NSTextAlignment.Left
         mileageLabel.textColor = UIColor.blackColor()
+        mileageLabel.font = UIFont(name: (mileageLabel.font?.fontName)!, size: 12)
         mileageLabel.text = "Tire Mileage"
         subview.addSubview(mileageLabel)
         
         let mileageValueLabel = UILabel(frame: CGRectMake(110, 90, 100, 30))
         mileageValueLabel.textAlignment = NSTextAlignment.Right
         mileageValueLabel.textColor = UIColor.blackColor()
+        mileageValueLabel.font = UIFont(name: (mileageValueLabel.font?.fontName)!, size: 12)
         mileageValueLabel.text = rating["t_mileage"] as! String!
         subview.addSubview(mileageValueLabel)
         
         let ratingLabel = UILabel(frame: CGRectMake(10, 120, 100, 30))
         ratingLabel.textAlignment = NSTextAlignment.Left
         ratingLabel.textColor = UIColor.blackColor()
-        ratingLabel.text = "Tire Rating"
+        ratingLabel.font = UIFont(name: (ratingLabel.font?.fontName)!, size: 12)
+        ratingLabel.text = "Barelabor Rating"
         subview.addSubview(ratingLabel)
         
         let ratingValueLabel = UILabel(frame: CGRectMake(110, 120, 100, 30))
         ratingValueLabel.textAlignment = NSTextAlignment.Right
         ratingValueLabel.textColor = UIColor.blackColor()
         ratingValueLabel.text = rating["t_rating"] as! String!
+        ratingValueLabel.font = UIFont(name: (ratingValueLabel.font?.fontName)!, size: 12)
         subview.addSubview(ratingValueLabel)
         
+        let tireRatingLabel = UILabel(frame: CGRectMake(10, 150, 100, 30))
+        tireRatingLabel.textAlignment = NSTextAlignment.Left
+        tireRatingLabel.textColor = UIColor.blackColor()
+        tireRatingLabel.font = UIFont(name: (tireRatingLabel.font?.fontName)!, size: 12)
+        tireRatingLabel.text = "Tire Rating"
+        subview.addSubview(tireRatingLabel)
+        
+        let tireRatingValueLabel = UILabel(frame: CGRectMake(110, 150, 100, 30))
+        tireRatingValueLabel.textAlignment = NSTextAlignment.Right
+        tireRatingValueLabel.textColor = UIColor.blackColor()
+        let t_rating = (rating["t_rating"] as! NSString!).doubleValue
+        tireRatingValueLabel.font = UIFont(name: (tireRatingValueLabel.font?.fontName)!, size: 12)
+        tireRatingValueLabel.text = t_rating > 7.56 ? "Above Average" : "Below Average"
+        subview.addSubview(tireRatingValueLabel)
+        
+        alert.addButton("Buy Now", action: {
+            let actionSheetController = UIAlertController(title: "Select Option", message: "How would you buy", preferredStyle: .ActionSheet)
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .Default, handler: { action -> Void in
+                actionSheetController.dismissViewControllerAnimated(true, completion: nil)
+            })
+            actionSheetController.addAction(cancelAction)
+            
+            let tirerackAction = UIAlertAction(title: "Tirerack", style: .Default, handler: { action -> Void in
+                if let tirerackUrl = NSURL(string: "http://www.dpbolvw.net/click-8048474-11275445-1408120810000"){
+                    if (UIApplication.sharedApplication().openURL(tirerackUrl)){
+                        print("successfully opened")
+                    }
+                }
+                else{
+                    print("invalid url")
+                }
+            })
+            actionSheetController.addAction(tirerackAction)
+            
+            let firestoneAction = UIAlertAction(title: "Firestone", style: .Default, handler: { action -> Void in
+                if let tirerackUrl = NSURL(string: "http://www.anrdoezrs.net/click-8048474-10399938-1431633665000"){
+                    if (UIApplication.sharedApplication().openURL(tirerackUrl)){
+                        print("successfully opened")
+                    }
+                }
+                else{
+                    print("invalid url")
+                }
+            })
+            actionSheetController.addAction(firestoneAction)
+            self.presentViewController(actionSheetController, animated: true, completion: nil)
+        })
         alert.customSubview = subview
         alert.showInfo("Tire Information", subTitle: "", closeButtonTitle: "Close")
         
+    }
+    
+    func closePopupBtnTapped(){
+        alert.hideView()
+        print("123")
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -362,10 +362,12 @@ class Network: NSObject {
     func getPriceByVehicle(year: String, make: String, model: String, feature: String, completion: (data: [String]?, ratingArray: NSArray) -> Void) {
         
         let url = Network.getVehiclePrice
+        let userID = NSUserDefaults.standardUserDefaults().objectForKey("userID") as! NSString!
         let params = ["year" :year,
             "make":make,
             "model":model,
-            "feature":feature]
+            "feature":feature,
+            "userID": userID]
         
         post(url, parameters: params) { (data) -> () in
             print(data)
@@ -394,9 +396,11 @@ class Network: NSObject {
     func getPriceBySize(width: String, ratio: String, diameter: String, completion: (data: [String]?, ratingArray: NSArray) -> Void) {
         
         let url = Network.getSizePrice
+        let userID = NSUserDefaults.standardUserDefaults().objectForKey("userID") as! NSString!
         let params = ["width":width,
             "ratio":ratio,
-            "diameter":diameter]
+            "diameter":diameter,
+            "userID": userID]
         
         post(url, parameters: params) { (data) -> () in
             let priceItems = data!["items"] as! NSArray!
