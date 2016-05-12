@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CarInfoView" customModule="BareLabor" customModuleProvider="target">
+            <connections>
+                <outlet property="engineSizeLabel" destination="HQO-ir-bDE" id="It4-Mw-1M3"/>
+                <outlet property="engineSizeLabelWidth" destination="WwO-1c-0Dz" id="fKb-oT-gyt"/>
+                <outlet property="makeLabel" destination="io9-XJ-VCK" id="DOl-FA-VoQ"/>
+                <outlet property="makeLabelWidth" destination="Fmw-dS-Lfc" id="Nsf-i1-x9h"/>
+                <outlet property="modelLabel" destination="zct-09-NuF" id="jP7-LH-4hz"/>
+                <outlet property="modelLabelWidth" destination="Dsb-bq-yVa" id="FrM-b9-Wal"/>
+                <outlet property="yearLabel" destination="woo-x0-FZt" id="m2k-fS-RME"/>
+                <outlet property="yearLabelWidth" destination="s5e-4F-rVf" id="tUv-iW-bJK"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="110"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2005" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="woo-x0-FZt" userLabel="YearLabel">
+                    <rect key="frame" x="40" y="11" width="80" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="FpX-0r-FL5"/>
+                        <constraint firstAttribute="width" constant="80" id="s5e-4F-rVf"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Toyota" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="io9-XJ-VCK" userLabel="MakeLabel">
+                    <rect key="frame" x="260" y="11" width="80" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="Fmw-dS-Lfc"/>
+                        <constraint firstAttribute="height" constant="30" id="Z8L-xt-2WE"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camry" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="zct-09-NuF" userLabel="ModelLabel">
+                    <rect key="frame" x="512" y="11" width="80" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="Dsb-bq-yVa"/>
+                        <constraint firstAttribute="height" constant="30" id="SbD-fA-VJ8"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="YearIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Ku5-i9-orf">
+                    <rect key="frame" x="8" y="14" width="24" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="Wnr-yI-DCm"/>
+                        <constraint firstAttribute="width" constant="24" id="XUR-i9-WcB"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MakeIcon" translatesAutoresizingMaskIntoConstraints="NO" id="0Dq-Vc-W2m">
+                    <rect key="frame" x="228" y="14" width="24" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="CTt-ln-QQY"/>
+                        <constraint firstAttribute="width" constant="24" id="QnI-IT-ckm"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ModelIcon" translatesAutoresizingMaskIntoConstraints="NO" id="f3W-an-t7e">
+                    <rect key="frame" x="480" y="14" width="24" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="24" id="0f1-2D-XgF"/>
+                        <constraint firstAttribute="height" constant="24" id="s31-y4-dO3"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EngineSizeIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Rbj-nE-NC5">
+                    <rect key="frame" x="228" y="64" width="24" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="4sg-cz-7VP"/>
+                        <constraint firstAttribute="width" constant="24" id="Xng-KR-4li"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3.0L Eng." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HQO-ir-bDE" userLabel="EngineSizeLabel">
+                    <rect key="frame" x="260" y="61" width="80" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="WwO-1c-0Dz"/>
+                        <constraint firstAttribute="height" constant="30" id="a3O-VK-g8x"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="HQO-ir-bDE" firstAttribute="leading" secondItem="Rbj-nE-NC5" secondAttribute="trailing" constant="8" id="4dh-iW-6uK"/>
+                <constraint firstItem="io9-XJ-VCK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="11" id="DLD-dV-LhN"/>
+                <constraint firstItem="woo-x0-FZt" firstAttribute="centerY" secondItem="io9-XJ-VCK" secondAttribute="centerY" id="HXe-va-B9q"/>
+                <constraint firstItem="io9-XJ-VCK" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Hau-tx-uve"/>
+                <constraint firstItem="HQO-ir-bDE" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Jgd-r4-dDc"/>
+                <constraint firstItem="Rbj-nE-NC5" firstAttribute="centerY" secondItem="HQO-ir-bDE" secondAttribute="centerY" id="K2R-SR-HK8"/>
+                <constraint firstItem="woo-x0-FZt" firstAttribute="leading" secondItem="Ku5-i9-orf" secondAttribute="trailing" constant="8" id="LO5-KB-FqA"/>
+                <constraint firstItem="zct-09-NuF" firstAttribute="centerY" secondItem="io9-XJ-VCK" secondAttribute="centerY" id="RBf-Jm-vmV"/>
+                <constraint firstItem="zct-09-NuF" firstAttribute="leading" secondItem="f3W-an-t7e" secondAttribute="trailing" constant="8" id="Uve-6x-fcB"/>
+                <constraint firstItem="0Dq-Vc-W2m" firstAttribute="centerY" secondItem="io9-XJ-VCK" secondAttribute="centerY" id="XSN-0l-88u"/>
+                <constraint firstItem="Ku5-i9-orf" firstAttribute="centerY" secondItem="woo-x0-FZt" secondAttribute="centerY" id="jol-QA-281"/>
+                <constraint firstItem="f3W-an-t7e" firstAttribute="centerY" secondItem="zct-09-NuF" secondAttribute="centerY" id="nHM-LL-PYU"/>
+                <constraint firstItem="woo-x0-FZt" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="40" id="qiK-9v-637"/>
+                <constraint firstAttribute="bottom" secondItem="HQO-ir-bDE" secondAttribute="bottom" constant="19" id="tan-Zc-yeJ"/>
+                <constraint firstAttribute="trailing" secondItem="zct-09-NuF" secondAttribute="trailing" constant="8" id="xGp-mZ-pF1"/>
+                <constraint firstItem="io9-XJ-VCK" firstAttribute="leading" secondItem="0Dq-Vc-W2m" secondAttribute="trailing" constant="8" id="xc6-9L-nG3"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="327" y="230"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="EngineSizeIcon" width="24" height="24"/>
+        <image name="MakeIcon" width="24" height="24"/>
+        <image name="ModelIcon" width="24" height="24"/>
+        <image name="YearIcon" width="24" height="24"/>
+    </resources>
+</document>

@@ -1,0 +1,1 @@
+2016-04-25 22:57:27 - ERROR --> Unknown column 'userPhone' in 'field list'

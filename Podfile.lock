@@ -1,0 +1,39 @@
+PODS:
+  - Alamofire (2.0.2)
+  - Charts (2.1.6)
+  - MBProgressHUD (0.9.1)
+  - SDWebImage (3.7.3):
+    - SDWebImage/Core (= 3.7.3)
+  - SDWebImage/Core (3.7.3)
+  - SwiftyJSON (2.3.1)
+  - TesseractOCRiOS (4.0.0)
+  - UITextView+Placeholder (1.1.1)
+
+DEPENDENCIES:
+  - Alamofire (~> 2.0)
+  - Charts
+  - MBProgressHUD (~> 0.9.1)
+  - SDWebImage
+  - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
+  - TesseractOCRiOS (~> 4.0)
+  - UITextView+Placeholder
+
+EXTERNAL SOURCES:
+  SwiftyJSON:
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
+
+CHECKOUT OPTIONS:
+  SwiftyJSON:
+    :commit: a4cce2ec0bf31bfec2cf4cc7f1030a59a7bc95d2
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
+
+SPEC CHECKSUMS:
+  Alamofire: 8edbab00802a752bb5240cc2abe70e7e881488ad
+  Charts: 5e1e5ac23898e5b09d226a2fc3e9d86bc281937e
+  MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
+  SwiftyJSON: 592b53bee5ef3dd9b3bebc6b9cb7ee35426ae8c3
+  TesseractOCRiOS: 90638afbe43d082433f2e76b384c7901d23956df
+  UITextView+Placeholder: a6fc3e0378f3870036ec562a7537cbf6dbae4bf6
+
+COCOAPODS: 0.39.0
