@@ -219,7 +219,7 @@ class ChartViewController: UIViewController {
         subview.addSubview(tireRatingValueLabel)
         
         alert.addButton("Buy Now", action: {
-            let actionSheetController = UIAlertController(title: "Select Option", message: "How would you buy", preferredStyle: .ActionSheet)
+            let actionSheetController = UIAlertController(title: "Select Option", message: "Where would you like to shop it?", preferredStyle: .ActionSheet)
             
             let cancelAction = UIAlertAction(title: "Cancel", style: .Default, handler: { action -> Void in
                 actionSheetController.dismissViewControllerAnimated(true, completion: nil)

@@ -25,6 +25,7 @@
 		522BC94A1CE516F300469DDF /* close_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 522BC9471CE516F300469DDF /* close_btn.png */; };
 		522BC94B1CE516F300469DDF /* left_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 522BC9481CE516F300469DDF /* left_arrow.png */; };
 		522BC94C1CE516F300469DDF /* menu_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 522BC9491CE516F300469DDF /* menu_icon.png */; };
+		522BC94E1CE51FD000469DDF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 522BC94D1CE51FD000469DDF /* Assets.xcassets */; };
 		52612BAE1CE3BDDB002DF488 /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52612BAB1CE3BDDB002DF488 /* SCLAlertView.swift */; };
 		52612BAF1CE3BDDB002DF488 /* SCLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52612BAC1CE3BDDB002DF488 /* SCLExtensions.swift */; };
 		A6A185159E34174FFF210F16 /* Pods_BareLabor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76743819A2C61F78C6CCC1F8 /* Pods_BareLabor.framework */; };
@@ -96,6 +97,7 @@
 		522BC9471CE516F300469DDF /* close_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close_btn.png; sourceTree = "<group>"; };
 		522BC9481CE516F300469DDF /* left_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_arrow.png; sourceTree = "<group>"; };
 		522BC9491CE516F300469DDF /* menu_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_icon.png; sourceTree = "<group>"; };
+		522BC94D1CE51FD000469DDF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		52612BAB1CE3BDDB002DF488 /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SCLAlertView.swift; path = SCLAlertView/SCLAlertView.swift; sourceTree = "<group>"; };
 		52612BAC1CE3BDDB002DF488 /* SCLExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SCLExtensions.swift; path = SCLAlertView/SCLExtensions.swift; sourceTree = "<group>"; };
 		76743819A2C61F78C6CCC1F8 /* Pods_BareLabor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BareLabor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -291,6 +293,7 @@
 				FA45F63A1BFCF6F400E1A079 /* Model */,
 				FA45F62F1BFCF3EE00E1A079 /* Controllers */,
 				522BC9461CE516F300469DDF /* Icon */,
+				522BC94D1CE51FD000469DDF /* Assets.xcassets */,
 				FA45F6051BFCF35A00E1A079 /* Main.storyboard */,
 				FA45F60A1BFCF35A00E1A079 /* LaunchScreen.storyboard */,
 				FA45F60D1BFCF35A00E1A079 /* Info.plist */,
@@ -530,6 +533,7 @@
 				FA45F6501BFDE86800E1A079 /* CarInfoView.xib in Resources */,
 				219DF2831C0701CF001588A1 /* ChartView.xib in Resources */,
 				522BC94C1CE516F300469DDF /* menu_icon.png in Resources */,
+				522BC94E1CE51FD000469DDF /* Assets.xcassets in Resources */,
 				FAA6B21F1BFF48EF00486F34 /* ResultsSlideView.xib in Resources */,
 				2184706A1C0F7CC00016DCF5 /* Term of use.txt in Resources */,
 				2184705F1C0CA7E10016DCF5 /* ImagePickerControlsView.xib in Resources */,
