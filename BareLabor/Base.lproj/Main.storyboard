@@ -414,7 +414,7 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="6DFB8549-DC9F-4913-9D54-395E22E3FD10" translatesAutoresizingMaskIntoConstraints="NO" id="NGP-Ov-3NL">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="744569FD-BA90-464B-9210-0C13346A53F6" translatesAutoresizingMaskIntoConstraints="NO" id="NGP-Ov-3NL">
                                                     <rect key="frame" x="305" y="123" width="8" height="13"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="8" id="4xU-XH-Bz9"/>
@@ -969,7 +969,7 @@
                                         </variation>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.46946765040707594" blue="0.68078283045325594" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.16862745098039217" green="0.52941176470588236" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="ZgL-cS-7a5" firstAttribute="centerY" secondItem="emJ-LN-sIj" secondAttribute="centerY" id="2UK-Wk-fxP"/>
                                     <constraint firstItem="ZgL-cS-7a5" firstAttribute="baseline" secondItem="QXU-Ws-am0" secondAttribute="baseline" id="3KF-4g-GyZ"/>
@@ -2970,7 +2970,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="6DFB8549-DC9F-4913-9D54-395E22E3FD10" width="5" height="8">
+        <image name="744569FD-BA90-464B-9210-0C13346A53F6" width="5" height="8">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
