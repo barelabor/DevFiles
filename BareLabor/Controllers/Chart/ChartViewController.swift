@@ -86,10 +86,24 @@ class ChartViewController: UIViewController {
         if (ratingArrayCount != 0) {
             for _ in ratingArray {
                 let button   = UIButton(type: UIButtonType.System) as UIButton
-                button.frame = CGRectMake(perWidth*CGFloat(i+1), chartViewHeight - CGFloat(heightAry[i] as! NSNumber), 9, CGFloat(heightAry[i] as! NSNumber))
-                button.backgroundColor = UIColor.whiteColor()
+                button.frame = CGRectMake(perWidth*CGFloat(i+1), chartViewHeight - CGFloat(heightAry[i] as! NSNumber), 15, CGFloat(heightAry[i] as! NSNumber))
+                
+                // If first bar, then background color is white.
+                if i == 0{
+                    button.backgroundColor = UIColor.whiteColor()
+                }
+                    
+                // If last bar, then background color will be black.
+                else if i == ratingArrayCount-1{
+                    button.backgroundColor = UIColor.blackColor()
+                }
+                
+                // Other's will be gray.
+                else{
+                    button.backgroundColor = UIColor.grayColor()
+                }
                 button.addTarget(self, action: #selector(ChartViewController.barBtnsTapped(_:)), forControlEvents: .TouchUpInside)
-                button.tag = ratingArrayCount-i-1
+                button.tag = i
                 i = i + 1
                 self.chartView.addSubview(button)
             }
@@ -132,7 +146,7 @@ class ChartViewController: UIViewController {
         priceValueLabel.textColor = UIColor.blackColor()
         let t_price = rating["t_price"] as! NSString!
         let quantityPrice = CGFloat(t_price.doubleValue) * CGFloat(self.quantity)
-        priceValueLabel.text = "\(quantityPrice)"
+        priceValueLabel.text = "$\(quantityPrice)"
         subview.addSubview(priceValueLabel)
         
         let mileageLabel = UILabel(frame: CGRectMake(10, 90, 100, 30))
