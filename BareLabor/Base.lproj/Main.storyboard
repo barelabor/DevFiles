@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="ReX-mk-j50"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="hAu-NK-69b"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cxM-JY-SF6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -414,7 +414,7 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="9152C3B5-8F33-4D8C-B49A-D60A58EFCE11" translatesAutoresizingMaskIntoConstraints="NO" id="NGP-Ov-3NL">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="6DFB8549-DC9F-4913-9D54-395E22E3FD10" translatesAutoresizingMaskIntoConstraints="NO" id="NGP-Ov-3NL">
                                                     <rect key="frame" x="305" y="123" width="8" height="13"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="8" id="4xU-XH-Bz9"/>
@@ -736,7 +736,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="csU-Es-w3h" customClass="ChartView" customModule="BareLabor" customModuleProvider="target">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="csU-Es-w3h">
                                 <rect key="frame" x="0.0" y="64" width="320" height="290"/>
                                 <color key="backgroundColor" red="0.062745098040000002" green="0.21960784310000001" blue="0.49019607840000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -747,6 +747,10 @@
                                         <exclude reference="5wg-EO-4CW"/>
                                     </mask>
                                 </variation>
+                            </view>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gpz-nz-Ilm" customClass="ChartView" customModule="BareLabor" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="320" height="290"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aih-hB-JYp" userLabel="SeparatorViewBTChartPrices">
                                 <rect key="frame" x="0.0" y="353" width="320" height="2"/>
@@ -900,46 +904,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QXU-Ws-am0">
-                                <rect key="frame" x="20" y="433" width="130" height="40"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="146" id="TNF-2L-ckS"/>
-                                    <constraint firstAttribute="height" constant="40" id="eSw-EY-PFW"/>
-                                    <constraint firstAttribute="width" constant="130" id="k2A-pa-8fP"/>
-                                    <constraint firstAttribute="width" constant="125" id="uVW-XW-smU"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <state key="normal" title="Lowest Rated Tire">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="TNF-2L-ckS"/>
-                                        <exclude reference="uVW-XW-smU"/>
-                                    </mask>
-                                </variation>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZgL-cS-7a5">
-                                <rect key="frame" x="170" y="433" width="130" height="40"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="125" id="KyF-tw-NM9"/>
-                                    <constraint firstAttribute="width" constant="146" id="Lsy-pN-bZA"/>
-                                    <constraint firstAttribute="height" constant="40" id="eNc-MA-Kjq"/>
-                                    <constraint firstAttribute="width" constant="130" id="x4d-Ej-2bR"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <state key="normal" title="Highest Rated Tire">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="KyF-tw-NM9"/>
-                                        <exclude reference="Lsy-pN-bZA"/>
-                                    </mask>
-                                </variation>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ow1-zi-Rj0">
                                 <rect key="frame" x="35" y="498" width="250" height="50"/>
                                 <constraints>
@@ -961,22 +925,87 @@
                                     <action selector="didPressButton:" destination="tre-0H-gJr" eventType="touchUpInside" id="ybH-ng-62Z"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="emJ-LN-sIj">
+                                <rect key="frame" x="12" y="421" width="296" height="63"/>
+                                <subviews>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QXU-Ws-am0">
+                                        <rect key="frame" x="8" y="12" width="130" height="40"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="146" id="TNF-2L-ckS"/>
+                                            <constraint firstAttribute="height" constant="40" id="eSw-EY-PFW"/>
+                                            <constraint firstAttribute="width" constant="130" id="k2A-pa-8fP"/>
+                                            <constraint firstAttribute="width" constant="125" id="uVW-XW-smU"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <state key="normal" title="Lowest Rated Tire">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="TNF-2L-ckS"/>
+                                                <exclude reference="uVW-XW-smU"/>
+                                            </mask>
+                                        </variation>
+                                    </button>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZgL-cS-7a5">
+                                        <rect key="frame" x="158" y="12" width="130" height="40"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="125" id="KyF-tw-NM9"/>
+                                            <constraint firstAttribute="width" constant="146" id="Lsy-pN-bZA"/>
+                                            <constraint firstAttribute="height" constant="40" id="eNc-MA-Kjq"/>
+                                            <constraint firstAttribute="width" constant="130" id="x4d-Ej-2bR"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <state key="normal" title="Highest Rated Tire">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="KyF-tw-NM9"/>
+                                                <exclude reference="Lsy-pN-bZA"/>
+                                            </mask>
+                                        </variation>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.46946765040707594" blue="0.68078283045325594" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="ZgL-cS-7a5" firstAttribute="centerY" secondItem="emJ-LN-sIj" secondAttribute="centerY" id="2UK-Wk-fxP"/>
+                                    <constraint firstItem="ZgL-cS-7a5" firstAttribute="baseline" secondItem="QXU-Ws-am0" secondAttribute="baseline" id="3KF-4g-GyZ"/>
+                                    <constraint firstAttribute="height" constant="63" id="9Yh-AA-NIl"/>
+                                    <constraint firstItem="QXU-Ws-am0" firstAttribute="centerY" secondItem="emJ-LN-sIj" secondAttribute="centerY" id="9fw-bz-2nd"/>
+                                    <constraint firstItem="QXU-Ws-am0" firstAttribute="leading" secondItem="emJ-LN-sIj" secondAttribute="leading" constant="8" id="G1l-cp-xhI"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZgL-cS-7a5" secondAttribute="trailing" constant="8" id="Go5-4j-nrr"/>
+                                    <constraint firstItem="ZgL-cS-7a5" firstAttribute="centerX" secondItem="emJ-LN-sIj" secondAttribute="centerX" id="Jqr-4s-Xd1"/>
+                                    <constraint firstAttribute="width" constant="296" id="ii0-Sr-eoP"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Jqr-4s-Xd1"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="csU-Es-w3h" firstAttribute="leading" secondItem="ctH-tr-gpJ" secondAttribute="leading" id="0WO-XN-yi8"/>
-                            <constraint firstItem="Ow1-zi-Rj0" firstAttribute="top" secondItem="ZgL-cS-7a5" secondAttribute="bottom" constant="25" id="15z-jW-afx"/>
+                            <constraint firstItem="emJ-LN-sIj" firstAttribute="top" secondItem="L7x-iy-ojs" secondAttribute="bottom" constant="23" id="0oO-Np-LwK"/>
                             <constraint firstItem="rfb-c4-yc6" firstAttribute="centerY" secondItem="ExZ-yJ-JUR" secondAttribute="centerY" id="1r0-mh-szv"/>
                             <constraint firstAttribute="trailing" secondItem="Ow1-zi-Rj0" secondAttribute="trailing" constant="35" id="3GE-1x-RY6"/>
                             <constraint firstItem="kqZ-jo-cuR" firstAttribute="leading" secondItem="ctH-tr-gpJ" secondAttribute="leading" id="4JE-wf-vi5"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ZgL-cS-7a5" secondAttribute="trailing" id="7Hj-ZZ-kWR"/>
+                            <constraint firstItem="Gpz-nz-Ilm" firstAttribute="top" secondItem="2rg-JE-haD" secondAttribute="bottom" id="7gy-fe-SKs"/>
+                            <constraint firstItem="emJ-LN-sIj" firstAttribute="leading" secondItem="ctH-tr-gpJ" secondAttribute="leadingMargin" constant="-9" id="8EN-iM-BR8"/>
                             <constraint firstItem="rfb-c4-yc6" firstAttribute="centerX" secondItem="ctH-tr-gpJ" secondAttribute="centerX" id="9yb-0O-GeS"/>
                             <constraint firstItem="mec-ot-4gD" firstAttribute="top" secondItem="kqZ-jo-cuR" secondAttribute="bottom" constant="-1" id="ACA-vT-7Sn"/>
                             <constraint firstItem="L7x-iy-ojs" firstAttribute="top" secondItem="3Ts-3L-Pgl" secondAttribute="bottom" constant="19" id="AHg-7i-iHQ"/>
                             <constraint firstAttribute="trailing" secondItem="aih-hB-JYp" secondAttribute="trailing" id="AWt-Q0-adz"/>
                             <constraint firstItem="aih-hB-JYp" firstAttribute="top" secondItem="csU-Es-w3h" secondAttribute="bottom" constant="-1" id="Acv-bq-G5n"/>
                             <constraint firstItem="L7x-iy-ojs" firstAttribute="leading" secondItem="ctH-tr-gpJ" secondAttribute="leading" id="EB3-Cj-KEg"/>
+                            <constraint firstItem="aih-hB-JYp" firstAttribute="top" secondItem="Gpz-nz-Ilm" secondAttribute="bottom" constant="-1" id="Edv-dd-d0I"/>
                             <constraint firstItem="kqZ-jo-cuR" firstAttribute="top" secondItem="csU-Es-w3h" secondAttribute="bottom" id="Fzs-bK-tPl"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="emJ-LN-sIj" secondAttribute="trailing" constant="-7" id="Gun-pp-H73"/>
+                            <constraint firstItem="emJ-LN-sIj" firstAttribute="centerX" secondItem="ctH-tr-gpJ" secondAttribute="centerX" id="H7N-mf-kcR"/>
                             <constraint firstItem="kqZ-jo-cuR" firstAttribute="top" secondItem="aih-hB-JYp" secondAttribute="bottom" constant="-1" id="HVU-4R-CTx"/>
                             <constraint firstAttribute="trailing" secondItem="L7x-iy-ojs" secondAttribute="trailing" id="IIj-hR-gUZ"/>
                             <constraint firstAttribute="trailing" secondItem="kqZ-jo-cuR" secondAttribute="trailing" id="IlM-hl-bPt"/>
@@ -984,27 +1013,30 @@
                             <constraint firstItem="csU-Es-w3h" firstAttribute="top" secondItem="2rg-JE-haD" secondAttribute="bottom" id="Kwk-QS-SIG"/>
                             <constraint firstItem="3Ts-3L-Pgl" firstAttribute="centerY" secondItem="rfb-c4-yc6" secondAttribute="centerY" id="NqH-Cp-agr"/>
                             <constraint firstItem="Ow1-zi-Rj0" firstAttribute="top" secondItem="L7x-iy-ojs" secondAttribute="bottom" constant="50" id="P9j-9P-OBC"/>
-                            <constraint firstItem="QXU-Ws-am0" firstAttribute="top" secondItem="L7x-iy-ojs" secondAttribute="bottom" constant="35" id="SG7-Ax-51q"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Gpz-nz-Ilm" secondAttribute="trailing" id="SGb-xo-Z1w"/>
                             <constraint firstItem="aih-hB-JYp" firstAttribute="leading" secondItem="ctH-tr-gpJ" secondAttribute="leading" id="Sju-7A-fX8"/>
+                            <constraint firstItem="kqZ-jo-cuR" firstAttribute="top" secondItem="Gpz-nz-Ilm" secondAttribute="bottom" id="Vny-SQ-jJa"/>
                             <constraint firstAttribute="trailing" secondItem="ExZ-yJ-JUR" secondAttribute="trailing" constant="13" id="WBP-cX-fzQ"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="QXU-Ws-am0" secondAttribute="leading" id="bdF-mK-aat"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ZgL-cS-7a5" secondAttribute="trailing" id="eWC-kM-IJk"/>
-                            <constraint firstItem="ZgL-cS-7a5" firstAttribute="top" secondItem="L7x-iy-ojs" secondAttribute="bottom" constant="35" id="ere-pV-io6"/>
+                            <constraint firstItem="Ow1-zi-Rj0" firstAttribute="top" secondItem="L7x-iy-ojs" secondAttribute="bottom" constant="100" id="Xbl-Jc-6TQ"/>
+                            <constraint firstItem="emJ-LN-sIj" firstAttribute="top" secondItem="L7x-iy-ojs" secondAttribute="bottom" constant="23" id="aDf-zC-VV2"/>
                             <constraint firstItem="mec-ot-4gD" firstAttribute="leading" secondItem="ctH-tr-gpJ" secondAttribute="leading" id="fzp-yC-mH0"/>
+                            <constraint firstItem="Gpz-nz-Ilm" firstAttribute="leading" secondItem="ctH-tr-gpJ" secondAttribute="leadingMargin" id="h7C-xO-wN0"/>
                             <constraint firstAttribute="trailing" secondItem="csU-Es-w3h" secondAttribute="trailing" id="hQT-8N-9V4"/>
                             <constraint firstAttribute="bottom" secondItem="Ow1-zi-Rj0" secondAttribute="bottom" constant="20" symbolic="YES" id="i48-sM-zcL"/>
                             <constraint firstItem="L7x-iy-ojs" firstAttribute="top" secondItem="aih-hB-JYp" secondAttribute="bottom" constant="23" id="j1Y-Ye-Y7C"/>
                             <constraint firstItem="Ow1-zi-Rj0" firstAttribute="leading" secondItem="ctH-tr-gpJ" secondAttribute="leading" constant="35" id="leS-l7-RBf"/>
-                            <constraint firstItem="ZgL-cS-7a5" firstAttribute="width" secondItem="ctH-tr-gpJ" secondAttribute="width" id="s4z-t0-X7V"/>
+                            <constraint firstItem="Ow1-zi-Rj0" firstAttribute="top" secondItem="emJ-LN-sIj" secondAttribute="bottom" constant="14" id="njx-1u-jqS"/>
+                            <constraint firstItem="Ow1-zi-Rj0" firstAttribute="top" secondItem="emJ-LN-sIj" secondAttribute="bottom" constant="14" id="s1H-rN-PvS"/>
                             <constraint firstItem="3Ts-3L-Pgl" firstAttribute="leading" secondItem="ctH-tr-gpJ" secondAttribute="leading" constant="11" id="v2Q-fu-CxY"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ZgL-cS-7a5" secondAttribute="trailing" id="y9J-Ui-p6d"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="7Hj-ZZ-kWR"/>
-                                <exclude reference="s4z-t0-X7V"/>
-                                <exclude reference="y9J-Ui-p6d"/>
+                                <exclude reference="8EN-iM-BR8"/>
+                                <exclude reference="Gun-pp-H73"/>
+                                <exclude reference="aDf-zC-VV2"/>
                                 <exclude reference="P9j-9P-OBC"/>
+                                <exclude reference="Xbl-Jc-6TQ"/>
+                                <exclude reference="s1H-rN-PvS"/>
                             </mask>
                         </variation>
                     </view>
@@ -1015,6 +1047,7 @@
                         <outlet property="avarageLabel" destination="tgS-o8-PH4" id="QTa-Vd-88x"/>
                         <outlet property="chartView" destination="csU-Es-w3h" id="Alx-3G-v4r"/>
                         <outlet property="editButton" destination="Ow1-zi-Rj0" id="vmv-2L-poy"/>
+                        <outlet property="guideView" destination="emJ-LN-sIj" id="EbL-2T-OGD"/>
                         <outlet property="highLabel" destination="U6S-wq-g0h" id="OJS-6j-s8k"/>
                         <outlet property="highPriceLabel" destination="dC6-Ie-BDC" id="kzO-E1-d1p"/>
                         <outlet property="lowLabel" destination="E0i-eT-Max" id="dvc-9n-QJc"/>
@@ -2937,7 +2970,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="9152C3B5-8F33-4D8C-B49A-D60A58EFCE11" width="5" height="8">
+        <image name="6DFB8549-DC9F-4913-9D54-395E22E3FD10" width="5" height="8">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -3013,9 +3046,9 @@ AAAAAAAAAAAAAAAAAAAK6g
         <image name="menu_icon" width="31" height="18"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="byc-rl-0Xn"/>
         <segue reference="KwT-6E-42I"/>
-        <segue reference="McL-6Y-00z"/>
         <segue reference="D7r-Zy-xIZ"/>
+        <segue reference="byc-rl-0Xn"/>
+        <segue reference="McL-6Y-00z"/>
     </inferredMetricsTieBreakers>
 </document>

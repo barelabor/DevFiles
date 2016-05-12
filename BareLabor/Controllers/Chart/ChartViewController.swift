@@ -37,6 +37,7 @@ class ChartViewController: UIViewController {
     @IBOutlet weak var highLabel: UILabel!
     @IBOutlet weak var highPriceLabel: UILabel!
     
+    @IBOutlet weak var guideView: UIView!
     var pricesForHistoryBtn: [String] = []
     var prices: [String] = []
     var ratingArray: NSArray = []
@@ -51,6 +52,13 @@ class ChartViewController: UIViewController {
         
         self.navigationItem.title = "What’s the Price?"
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        
+        
+        //Set guide View
+        
+        self.guideView.layer.borderColor = UIColor.whiteColor().CGColor
+        self.guideView.layer.borderWidth = 1
+        self.guideView.layer.cornerRadius = 6
         
         self.editButton.layer.borderColor = UIColor.whiteColor().CGColor
         //self.notMyCarButton.layer.borderColor = UIColor.whiteColor().CGColor
