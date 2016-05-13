@@ -38,16 +38,26 @@ class ChartViewController: UIViewController {
     @IBOutlet weak var highPriceLabel: UILabel!
     
     @IBOutlet weak var guideView: UIView!
+    @IBOutlet weak var guideLowValueLabel: UIButton!
+    @IBOutlet weak var guideHighValueLabel: UIButton!
     var pricesForHistoryBtn: [String] = []
     var prices: [String] = []
     var ratingArray: NSArray = []
     var quantity = 1
     var transparencyButton = UIButton()
-    
+    var isScanEstimate:Bool = false
     // Set default value for low, average, high to display default values if nothing receives.
     static var lowValue = "50"
     static var averageValue = "200"
     static var highValue = "400"
+    
+    var repairArray: [String] = []
+    var highCostArray: [String] = []
+    var averageCostArray: [String] = []
+    var lowCostArray: [String] = []
+    var repairString:String = ""
+    var repairArrayCount = 0
+    
     var alert = SCLAlertView()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,6 +84,33 @@ class ChartViewController: UIViewController {
             self.highPriceLabel.text = "$"+ChartViewController.highValue
             self.AvaragePriceLabel.text = "$"+ChartViewController.averageValue
         }
+        
+        if (self.isScanEstimate){
+            repairArrayCount = 0
+            print(self.repairArray.count)
+            for x in 0 ..< self.repairArray.count{
+                repairString = self.repairArray[x] as String!
+                if (!repairString.isEmpty){
+                    repairArrayCount = repairArrayCount + 1
+                    
+                }
+                
+            }
+            
+            // Set Guide Text
+            let firstRepairString = self.repairArray[0].componentsSeparatedByString(" ")[0]
+            self.guideLowValueLabel.setTitle(firstRepairString, forState: UIControlState.Normal)
+            
+            let lastRepairString = self.repairArray[repairArrayCount-1].componentsSeparatedByString(" ")[0]
+            self.guideHighValueLabel.setTitle(lastRepairString, forState: UIControlState.Normal)
+        }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        repairArray.removeAll()
+        highCostArray.removeAll()
+        averageCostArray.removeAll()
+        lowCostArray.removeAll()
     }
     
     override func viewDidLayoutSubviews() {
@@ -82,17 +119,14 @@ class ChartViewController: UIViewController {
         let ratingArrayCount = self.ratingArray.count
         let chartViewHeight = self.chartView.frame.size.height
         let screenWidth = UIScreen.mainScreen().bounds.size.width
-        let perWidth = screenWidth/CGFloat(ratingArrayCount+1)
-        print("chartviewheight", chartViewHeight)
-        let heightAry : NSMutableArray=[]
-        let firstSize = 100
-        for i in 0 ..< ratingArrayCount {
-            heightAry.addObject(firstSize + (i * 10))
-        }
-        
-        print(heightAry)
         var i = 0
         if (ratingArrayCount != 0) {
+            let firstSize = 100
+            let heightAry : NSMutableArray=[]
+            let perWidth = screenWidth/CGFloat(ratingArrayCount+1)
+            for i in 0 ..< ratingArrayCount {
+                heightAry.addObject(firstSize + (i * 10))
+            }
             for _ in ratingArray {
                 let button   = UIButton(type: UIButtonType.System) as UIButton
                 button.frame = CGRectMake(perWidth*CGFloat(i+1), chartViewHeight - CGFloat(heightAry[i] as! NSNumber), 15, CGFloat(heightAry[i] as! NSNumber))
@@ -117,8 +151,129 @@ class ChartViewController: UIViewController {
                 self.chartView.addSubview(button)
             }
         }
+        if (self.isScanEstimate){
+
+            
+            let firstSize = 100
+            let heightAry : NSMutableArray=[]
+            let perWidth = screenWidth/CGFloat(repairArrayCount+1)
+            for i in 0 ..< repairArrayCount {
+                heightAry.addObject(firstSize + (i * 10))
+            }
+            let colorArr: [UIColor] = [UIColor.redColor(), UIColor.greenColor(), UIColor.whiteColor(), UIColor.blackColor(), UIColor.grayColor(), UIColor.brownColor(), UIColor.darkGrayColor(), UIColor.whiteColor(), UIColor.greenColor(), UIColor.blackColor()]
+            for x in 0 ..< repairArrayCount {
+                
+                let button   = UIButton(type: UIButtonType.System) as UIButton
+                button.frame = CGRectMake(perWidth*CGFloat(x+1), chartViewHeight - CGFloat(heightAry[x] as! NSNumber), 15, CGFloat(heightAry[x] as! NSNumber))
+                
+                button.backgroundColor = colorArr[x]
+                button.addTarget(self, action: #selector(ChartViewController.barScanBtnsTapped(_:)), forControlEvents: .TouchUpInside)
+                button.tag = x
+                self.chartView.addSubview(button)
+            }
+            self.isScanEstimate = false
+        }
     }
     
+    func barScanBtnsTapped(sender: UIButton){
+        let index = sender.tag
+        let repairString = self.repairArray[index]
+        let highCostString = self.highCostArray[index]
+        let averageCostString = self.averageCostArray[index]
+        let lowCostString = self.lowCostArray[index]
+        
+        let appearance = SCLAlertView.SCLAppearance(
+            showCloseButton: false
+        )
+        
+        // Initialize SCLAlertView using custom Appearance
+        alert = SCLAlertView(appearance: appearance)
+        
+        // Creat the subview
+        let subview = UIView(frame: CGRectMake(0,0,220,140))
+        
+        let repairLabel = UILabel(frame: CGRectMake(10, 10, 80, 30))
+        repairLabel.textAlignment = NSTextAlignment.Left
+        repairLabel.font = UIFont(name: (repairLabel.font?.fontName)!, size: 14)
+        repairLabel.text = "Repair"
+        subview.addSubview(repairLabel)
+        
+        let repairValueLabel = UILabel(frame: CGRectMake(90, 10, 120, 30))
+        repairValueLabel.textAlignment = NSTextAlignment.Right
+        repairValueLabel.textColor = UIColor.blackColor()
+        repairValueLabel.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        repairValueLabel.numberOfLines = 100
+        repairValueLabel.text = repairString
+        repairValueLabel.font = UIFont(name: (repairValueLabel.font?.fontName)!, size: 12)
+        subview.addSubview(repairValueLabel)
+        
+        let highCostLabel = UILabel(frame: CGRectMake(10, 40, 80, 30))
+        highCostLabel.textAlignment = NSTextAlignment.Left
+        highCostLabel.textColor = UIColor.blackColor()
+        highCostLabel.font = UIFont(name: (highCostLabel.font?.fontName)!, size: 14)
+        highCostLabel.text = "High Cost"
+        subview.addSubview(highCostLabel)
+        
+        let highCostValueLabel = UILabel(frame: CGRectMake(90, 40, 120, 30))
+        highCostValueLabel.textAlignment = NSTextAlignment.Right
+        highCostValueLabel.textColor = UIColor.blackColor()
+        highCostValueLabel.font = UIFont(name: (highCostValueLabel.font?.fontName)!, size: 14)
+        highCostValueLabel.text = "$\(highCostString)"
+        subview.addSubview(highCostValueLabel)
+        
+        let averageCostLabel = UILabel(frame: CGRectMake(10, 70, 120, 30))
+        averageCostLabel.textAlignment = NSTextAlignment.Left
+        averageCostLabel.textColor = UIColor.blackColor()
+        averageCostLabel.font = UIFont(name: (averageCostLabel.font?.fontName)!, size: 14)
+        averageCostLabel.text = "Average Cost"
+        subview.addSubview(averageCostLabel)
+        
+        let averageCostValueLabel = UILabel(frame: CGRectMake(90, 70, 120, 30))
+        averageCostValueLabel.textAlignment = NSTextAlignment.Right
+        averageCostValueLabel.textColor = UIColor.blackColor()
+        averageCostValueLabel.font = UIFont(name: (averageCostValueLabel.font?.fontName)!, size: 14)
+        averageCostValueLabel.text = "$\(averageCostString)"
+        subview.addSubview(averageCostValueLabel)
+        
+        let lowCostLabel = UILabel(frame: CGRectMake(10, 100, 80, 30))
+        lowCostLabel.textAlignment = NSTextAlignment.Left
+        lowCostLabel.textColor = UIColor.blackColor()
+        lowCostLabel.font = UIFont(name: (lowCostLabel.font?.fontName)!, size: 14)
+        lowCostLabel.text = "Low Cost"
+        subview.addSubview(lowCostLabel)
+        
+        let lowCostValueLabel = UILabel(frame: CGRectMake(90, 100, 120, 30))
+        lowCostValueLabel.textAlignment = NSTextAlignment.Right
+        lowCostValueLabel.textColor = UIColor.blackColor()
+        lowCostValueLabel.font = UIFont(name: (lowCostValueLabel.font?.fontName)!, size: 14)
+        lowCostValueLabel.text = "$\(lowCostString)"
+        subview.addSubview(lowCostValueLabel)
+        
+        alert.addButton("Shop Around", action: {
+            let actionSheetController = UIAlertController(title: "Select Option", message: "Where would you like to shop at?", preferredStyle: .ActionSheet)
+            
+            let firestoneAction = UIAlertAction(title: "Firestone", style: .Default, handler: { action -> Void in
+                if let tirerackUrl = NSURL(string: "http://www.dpbolvw.net/click-8048474-11275445-1408120810000"){
+                    if (UIApplication.sharedApplication().openURL(tirerackUrl)){
+                        print("successfully opened")
+                    }
+                }
+                else{
+                    print("invalid url")
+                }
+            })
+            actionSheetController.addAction(firestoneAction)
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .Default, handler: { action -> Void in
+                actionSheetController.dismissViewControllerAnimated(true, completion: nil)
+            })
+            actionSheetController.addAction(cancelAction)
+            
+            self.presentViewController(actionSheetController, animated: true, completion: nil)
+        })
+        alert.customSubview = subview
+        alert.showInfo("Repair Information", subTitle: "", closeButtonTitle: "Close")
+    }
     func barBtnsTapped(sender: UIButton){
         let index = sender.tag
         let rating = self.ratingArray[index]
@@ -133,17 +288,6 @@ class ChartViewController: UIViewController {
         // Creat the subview
         let subview = UIView(frame: CGRectMake(0,0,220,200))
         
-//        let closeBtnImage = UIImage(named: "close_btn.png") as UIImage!
-//        let button   = UIButton(type: UIButtonType.Custom) as UIButton
-//        button.frame = CGRectMake(195, 0, 20, 20)
-//        button.backgroundColor = UIColor.clearColor()
-//        button.setImage(closeBtnImage, forState: .Normal)
-//        button.tintColor = UIColor.clearColor()
-//        button.imageView?.tintColor = UIColor.clearColor()
-//        button.addTarget(self, action: #selector(ChartViewController.closePopupBtnTapped), forControlEvents: UIControlEvents.TouchUpInside)
-//        
-//        subview.addSubview(button)
-//        
         let nameLabel = UILabel(frame: CGRectMake(10, 10, 80, 50))
         nameLabel.textAlignment = NSTextAlignment.Left
         nameLabel.textColor = UIColor.blackColor()
@@ -256,17 +400,8 @@ class ChartViewController: UIViewController {
         alert.customSubview = subview
         alert.showInfo("Tire Information", subTitle: "", closeButtonTitle: "Close")
         
-//        self.transparencyButton.frame = UIScreen.mainScreen().bounds
-//        self.transparencyButton.backgroundColor = UIColor.clearColor()
-//        self.view.insertSubview(transparencyButton, belowSubview: alert.view)
-//        self.transparencyButton.addTarget(self, action: #selector(ChartViewController.closePopupBtnTapped), forControlEvents: .TouchUpInside)
-        
     }
     
-    func closePopupBtnTapped(){
-        print("clolsed")
-        alert.hideView()
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

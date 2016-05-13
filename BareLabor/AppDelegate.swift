@@ -71,6 +71,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 				{
                     chartController.prices = [request["lowCost"] as! String, request["averageCost"] as! String, request["highCost"] as! String];
                     
+                    let repairArrayString = request["repairArray"] as! String!
+                    let highCostArrayString = request["highCostArray"] as! String!
+                    let averageCostArrayString = request["averageCostArray"] as! String!
+                    let lowCostArrayString = request["lowCostArray"] as! String!
+                    
+                    chartController.repairArray = repairArrayString.componentsSeparatedByString(",")
+                    chartController.highCostArray = highCostArrayString.componentsSeparatedByString(",")
+                    chartController.averageCostArray = averageCostArrayString.componentsSeparatedByString(",")
+                    chartController.lowCostArray = lowCostArrayString.componentsSeparatedByString(",")
+                    chartController.isScanEstimate = true
+                    
                     if (application.applicationState == .Active)
                     {
                         let alert = UIAlertController(title: nil, message: "The pricing for your printed estimate has arrived", preferredStyle: .Alert)

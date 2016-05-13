@@ -414,7 +414,7 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="A96AAD10-447F-403E-8BB3-AB1FA8BCF76F" translatesAutoresizingMaskIntoConstraints="NO" id="NGP-Ov-3NL">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DCFE0DBA-74D7-43A3-A7A4-D8C64DAC754F" translatesAutoresizingMaskIntoConstraints="NO" id="NGP-Ov-3NL">
                                                     <rect key="frame" x="305" y="123" width="8" height="13"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="8" id="4xU-XH-Bz9"/>
@@ -1047,6 +1047,8 @@
                         <outlet property="avarageLabel" destination="tgS-o8-PH4" id="QTa-Vd-88x"/>
                         <outlet property="chartView" destination="csU-Es-w3h" id="Alx-3G-v4r"/>
                         <outlet property="editButton" destination="Ow1-zi-Rj0" id="vmv-2L-poy"/>
+                        <outlet property="guideHighValueLabel" destination="ZgL-cS-7a5" id="EW2-Od-Vbx"/>
+                        <outlet property="guideLowValueLabel" destination="QXU-Ws-am0" id="oxD-WN-EzB"/>
                         <outlet property="guideView" destination="emJ-LN-sIj" id="EbL-2T-OGD"/>
                         <outlet property="highLabel" destination="U6S-wq-g0h" id="OJS-6j-s8k"/>
                         <outlet property="highPriceLabel" destination="dC6-Ie-BDC" id="kzO-E1-d1p"/>
@@ -2970,7 +2972,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="A96AAD10-447F-403E-8BB3-AB1FA8BCF76F" width="5" height="8">
+        <image name="Arrow" width="5" height="8"/>
+        <image name="ConfirmPassword" width="16" height="16"/>
+        <image name="DCFE0DBA-74D7-43A3-A7A4-D8C64DAC754F" width="5" height="8">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -3024,8 +3028,6 @@ CmEKZgpuCnEKdgqFCokKkAqYCqUKqgqsCq4Kswq7Cr4KwwrLCs4K4ArjCugAAAAAAAACAQAAAAAAAABB
 AAAAAAAAAAAAAAAAAAAK6g
 </mutableData>
         </image>
-        <image name="Arrow" width="5" height="8"/>
-        <image name="ConfirmPassword" width="16" height="16"/>
         <image name="Email" width="16" height="16"/>
         <image name="EmptyCercle" width="18" height="18"/>
         <image name="EngineSizeIcon" width="24" height="24"/>
