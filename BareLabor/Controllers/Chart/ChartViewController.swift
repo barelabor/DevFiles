@@ -58,6 +58,7 @@ class ChartViewController: UIViewController {
     var repairString:String = ""
     var repairArrayCount = 0
     
+    var colorArr: [UIColor] = []
     var alert = SCLAlertView()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,6 +87,7 @@ class ChartViewController: UIViewController {
         }
         
         if (self.isScanEstimate){
+            self.colorArr=[UIColor.redColor(), UIColor.greenColor(), UIColor.whiteColor(), UIColor.blackColor(), UIColor.grayColor(), UIColor.brownColor(), UIColor.darkGrayColor(), UIColor.whiteColor(), UIColor.greenColor(), UIColor.blackColor()]
             repairArrayCount = 0
             print(self.repairArray.count)
             for x in 0 ..< self.repairArray.count{
@@ -100,9 +102,14 @@ class ChartViewController: UIViewController {
             // Set Guide Text
             let firstRepairString = self.repairArray[0].componentsSeparatedByString(" ")[0]
             self.guideLowValueLabel.setTitle(firstRepairString, forState: UIControlState.Normal)
+            self.guideLowValueLabel.backgroundColor = colorArr[0]
             
             let lastRepairString = self.repairArray[repairArrayCount-1].componentsSeparatedByString(" ")[0]
             self.guideHighValueLabel.setTitle(lastRepairString, forState: UIControlState.Normal)
+            self.guideHighValueLabel.backgroundColor = colorArr[repairArrayCount-1]
+            if colorArr[repairArrayCount-1] == UIColor.whiteColor() {
+                self.guideHighValueLabel.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+            }
         }
     }
     
@@ -160,7 +167,6 @@ class ChartViewController: UIViewController {
             for i in 0 ..< repairArrayCount {
                 heightAry.addObject(firstSize + (i * 10))
             }
-            let colorArr: [UIColor] = [UIColor.redColor(), UIColor.greenColor(), UIColor.whiteColor(), UIColor.blackColor(), UIColor.grayColor(), UIColor.brownColor(), UIColor.darkGrayColor(), UIColor.whiteColor(), UIColor.greenColor(), UIColor.blackColor()]
             for x in 0 ..< repairArrayCount {
                 
                 let button   = UIButton(type: UIButtonType.System) as UIButton
