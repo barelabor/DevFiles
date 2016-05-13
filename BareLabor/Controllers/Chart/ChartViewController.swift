@@ -42,6 +42,8 @@ class ChartViewController: UIViewController {
     var prices: [String] = []
     var ratingArray: NSArray = []
     var quantity = 1
+    var transparencyButton = UIButton()
+    
     // Set default value for low, average, high to display default values if nothing receives.
     static var lowValue = "50"
     static var averageValue = "200"
@@ -52,7 +54,6 @@ class ChartViewController: UIViewController {
         
         self.navigationItem.title = "What’s the Price?"
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
-        
         
         //Set guide View
         
@@ -132,17 +133,17 @@ class ChartViewController: UIViewController {
         // Creat the subview
         let subview = UIView(frame: CGRectMake(0,0,220,200))
         
-        let closeBtnImage = UIImage(named: "close_btn.png") as UIImage!
-        let button   = UIButton(type: UIButtonType.Custom) as UIButton
-        button.frame = CGRectMake(195, 0, 20, 20)
-        button.backgroundColor = UIColor.clearColor()
-        button.setImage(closeBtnImage, forState: .Normal)
-        button.tintColor = UIColor.clearColor()
-        button.imageView?.tintColor = UIColor.clearColor()
-        button.addTarget(self, action: #selector(ChartViewController.closePopupBtnTapped), forControlEvents: UIControlEvents.TouchUpInside)
-        
-        subview.addSubview(button)
-        
+//        let closeBtnImage = UIImage(named: "close_btn.png") as UIImage!
+//        let button   = UIButton(type: UIButtonType.Custom) as UIButton
+//        button.frame = CGRectMake(195, 0, 20, 20)
+//        button.backgroundColor = UIColor.clearColor()
+//        button.setImage(closeBtnImage, forState: .Normal)
+//        button.tintColor = UIColor.clearColor()
+//        button.imageView?.tintColor = UIColor.clearColor()
+//        button.addTarget(self, action: #selector(ChartViewController.closePopupBtnTapped), forControlEvents: UIControlEvents.TouchUpInside)
+//        
+//        subview.addSubview(button)
+//        
         let nameLabel = UILabel(frame: CGRectMake(10, 10, 80, 50))
         nameLabel.textAlignment = NSTextAlignment.Left
         nameLabel.textColor = UIColor.blackColor()
@@ -207,7 +208,7 @@ class ChartViewController: UIViewController {
         tireRatingLabel.textAlignment = NSTextAlignment.Left
         tireRatingLabel.textColor = UIColor.blackColor()
         tireRatingLabel.font = UIFont(name: (tireRatingLabel.font?.fontName)!, size: 12)
-        tireRatingLabel.text = "Tire Rating"
+        tireRatingLabel.text = "Tire Ranking"
         subview.addSubview(tireRatingLabel)
         
         let tireRatingValueLabel = UILabel(frame: CGRectMake(110, 150, 100, 30))
@@ -219,15 +220,10 @@ class ChartViewController: UIViewController {
         subview.addSubview(tireRatingValueLabel)
         
         alert.addButton("Buy Now", action: {
-            let actionSheetController = UIAlertController(title: "Select Option", message: "Where would you like to shop it?", preferredStyle: .ActionSheet)
-            
-            let cancelAction = UIAlertAction(title: "Cancel", style: .Default, handler: { action -> Void in
-                actionSheetController.dismissViewControllerAnimated(true, completion: nil)
-            })
-            actionSheetController.addAction(cancelAction)
+            let actionSheetController = UIAlertController(title: "Select Option", message: "Where would you like to shop at?", preferredStyle: .ActionSheet)
             
             let tirerackAction = UIAlertAction(title: "Tirerack", style: .Default, handler: { action -> Void in
-                if let tirerackUrl = NSURL(string: "http://www.dpbolvw.net/click-8048474-11275445-1408120810000"){
+                if let tirerackUrl = NSURL(string: "http://www.anrdoezrs.net/click-8048474-10399938-1431633665000"){
                     if (UIApplication.sharedApplication().openURL(tirerackUrl)){
                         print("successfully opened")
                     }
@@ -239,7 +235,7 @@ class ChartViewController: UIViewController {
             actionSheetController.addAction(tirerackAction)
             
             let firestoneAction = UIAlertAction(title: "Firestone", style: .Default, handler: { action -> Void in
-                if let tirerackUrl = NSURL(string: "http://www.anrdoezrs.net/click-8048474-10399938-1431633665000"){
+                if let tirerackUrl = NSURL(string: "http://www.dpbolvw.net/click-8048474-11275445-1408120810000"){
                     if (UIApplication.sharedApplication().openURL(tirerackUrl)){
                         print("successfully opened")
                     }
@@ -249,22 +245,33 @@ class ChartViewController: UIViewController {
                 }
             })
             actionSheetController.addAction(firestoneAction)
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .Default, handler: { action -> Void in
+                actionSheetController.dismissViewControllerAnimated(true, completion: nil)
+            })
+            actionSheetController.addAction(cancelAction)
+            
             self.presentViewController(actionSheetController, animated: true, completion: nil)
         })
         alert.customSubview = subview
         alert.showInfo("Tire Information", subTitle: "", closeButtonTitle: "Close")
         
+//        self.transparencyButton.frame = UIScreen.mainScreen().bounds
+//        self.transparencyButton.backgroundColor = UIColor.clearColor()
+//        self.view.insertSubview(transparencyButton, belowSubview: alert.view)
+//        self.transparencyButton.addTarget(self, action: #selector(ChartViewController.closePopupBtnTapped), forControlEvents: .TouchUpInside)
+        
     }
     
     func closePopupBtnTapped(){
+        print("clolsed")
         alert.hideView()
-        print("123")
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     
     // MARK: - IBAction
     /*

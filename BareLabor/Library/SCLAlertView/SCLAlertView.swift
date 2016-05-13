@@ -186,6 +186,7 @@ public class SCLAlertView: UIViewController {
     var contentView = UIView()
     var circleBG = UIView(frame:CGRect(x:0, y:0, width:kCircleHeightBackground, height:kCircleHeightBackground))
     var circleView = UIView()
+    var closeBtn = UIButton(type: UIButtonType.Custom) as UIButton
     var circleIconView : UIView?
     var duration: NSTimeInterval!
     var durationStatusTimer: NSTimer!
@@ -241,6 +242,12 @@ public class SCLAlertView: UIViewController {
         let x = (kCircleHeightBackground - appearance.kCircleHeight) / 2
         circleView.frame = CGRect(x:x, y:x, width:appearance.kCircleHeight, height:appearance.kCircleHeight)
         circleView.layer.cornerRadius = circleView.frame.size.height / 2
+        //Close Button
+        let closeBtnIcon = UIImage(named: "close_btn.png")
+        closeBtn.frame = CGRect(x: appearance.kWindowWidth - 30, y: 10, width: 20, height: 20)
+        closeBtn.backgroundColor = UIColor.clearColor()
+        closeBtn.setImage(closeBtnIcon, forState: .Normal)
+        closeBtn.addTarget(self, action: #selector(SCLAlertView.closeBtnTapped), forControlEvents: .TouchUpInside)
         // Title
         labelTitle.numberOfLines = 1
         labelTitle.textAlignment = .Center
@@ -257,6 +264,7 @@ public class SCLAlertView: UIViewController {
         labelTitle.textColor = UIColorFromRGB(0x4D4D4D)
         viewText.textColor = UIColorFromRGB(0x4D4D4D)
         contentView.layer.borderColor = UIColorFromRGB(0xCCCCCC).CGColor
+        contentView.addSubview(closeBtn)
         //Gesture Recognizer for tapping outside the textinput
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(SCLAlertView.tapped(_:)))
         tapGesture.numberOfTapsRequired = 1
@@ -357,6 +365,11 @@ public class SCLAlertView: UIViewController {
         }
     }
     
+    override public func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        // Hide View
+        hideView()
+    }
+    
     public func addTextField(title:String?=nil)->UITextField {
         // Update view height
         appearance.setkWindowHeight(appearance.kWindowHeight + appearance.kTextFieldHeight)
@@ -441,6 +454,10 @@ public class SCLAlertView: UIViewController {
         }
         
         if(self.view.alpha != 0.0 && appearance.shouldAutoDismiss){ hideView() }
+    }
+    
+    func closeBtnTapped(btn:SCLButton) {
+        hideView()
     }
     
     
