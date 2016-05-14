@@ -114,8 +114,20 @@ class MainMenuViewController: BaseViewController {
                         ChartViewController.lowValue = lowCost
                         ChartViewController.averageValue = averageCost
                         ChartViewController.highValue = highCost
+                        let repairArrayString = item["repairArray"] as! String!
+                        let highCostArrayString = item["highCostArray"] as! String!
+                        let averageCostArrayString = item["averageCostArray"] as! String!
+                        let lowCostArrayString = item["lowCostArray"] as! String!
+                        
+                        
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
                             let chartViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ChartViewController") as! ChartViewController!
+                            
+                            chartViewController.repairArray = repairArrayString.componentsSeparatedByString(",")
+                            chartViewController.highCostArray = highCostArrayString.componentsSeparatedByString(",")
+                            chartViewController.averageCostArray = averageCostArrayString.componentsSeparatedByString(",")
+                            chartViewController.lowCostArray = lowCostArrayString.componentsSeparatedByString(",")
+                            chartViewController.isScanEstimate = true
                             self.navigationController?.pushViewController(chartViewController, animated: true)
 
                         })
