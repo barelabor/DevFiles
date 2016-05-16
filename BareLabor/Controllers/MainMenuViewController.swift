@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Alamofire
+//import Alamofire
 class MainMenuViewController: BaseViewController {
 
     @IBOutlet weak var iHaveAnEstimateButton: UIButton!
@@ -83,9 +83,11 @@ class MainMenuViewController: BaseViewController {
             let estimateIDNumber = NSUserDefaults.standardUserDefaults().objectForKey("estimateID") as! NSNumber!
             let estimateID = "\(estimateIDNumber)" as String!
             
-            let dict = ["userID": userID, "estimateID": estimateID]
+            //let dict = ["userID": userID, "estimateID": estimateID]
             CommonUtils.showProgress(self.view, label: "Loading Information...")
-            WebServiceObject.postRequest(WebServiceObject.getEstimatesURL, requestDict: dict) { (data, response, error) -> Void in
+            
+            Network.sharedInstance.getEstimates(userID, estimateID: estimateID, completion: { (data) in
+                
                 
                 // hide progress in main queue
                 
@@ -96,8 +98,8 @@ class MainMenuViewController: BaseViewController {
                 
                 // received and check data
                 
-                if response!.statusCode == 200 {
-                    let item = data!["item"] as! NSDictionary
+                //if response!.statusCode == 200 {
+                    let item = data! as NSDictionary
                     if let _ = item["estimateID"] {
                         
                         let highCost = item["highCost"] as! String!
@@ -137,11 +139,11 @@ class MainMenuViewController: BaseViewController {
                         CommonUtils.showAlert("Sorry", message: "No History is Available.")
                         return
                     }
-                } else {
-                    CommonUtils.showAlert("Sorry", message: "No History is Available.")
-                    return
-                }
-            }
+//                } else {
+//                    CommonUtils.showAlert("Sorry", message: "No History is Available.")
+//                    return
+//                }
+            })
 
         }
     }

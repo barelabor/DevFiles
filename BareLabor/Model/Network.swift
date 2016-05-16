@@ -245,14 +245,14 @@ class Network: NSObject {
         post(url, parameters: params) { (data) -> () in
             
             if (nil != data) {
-//                var returnedDictionary: [String: AnyObject] = [:]
-//                let logInInfo = data as? [String : AnyObject]
+                var returnedDictionary: [String: AnyObject] = [:]
+                let logInInfo = data as? [String : AnyObject]
                 print(data)
-//                if let status = logInInfo!["status"] as? String, var item = logInInfo!["item"] as? [String:AnyObject] {
-//                    item["status"] = status
-//                    returnedDictionary = item
-//                }
-//                completion(data: returnedDictionary)
+                if let status = logInInfo!["status"] as? String, var item = logInInfo!["item"] as? [String:AnyObject] {
+                    item["status"] = status
+                    returnedDictionary = item
+                }
+                completion(data: returnedDictionary)
             } else {
                 completion(data: nil)
             }
