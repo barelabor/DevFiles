@@ -79,6 +79,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04D87D971CED0D9F0097404E /* BareLabor-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BareLabor-Bridging-Header.h"; sourceTree = "<group>"; };
 		213BBF4C1C032F5B00E7942E /* Privacy Policy.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Privacy Policy.txt"; sourceTree = "<group>"; };
 		213BBF541C037DFE00E7942E /* ExperienceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperienceViewController.swift; sourceTree = "<group>"; };
 		213BBF561C0380BD00E7942E /* PositiveNegativeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositiveNegativeViewController.swift; sourceTree = "<group>"; };
@@ -297,6 +298,7 @@
 				FA45F6051BFCF35A00E1A079 /* Main.storyboard */,
 				FA45F60A1BFCF35A00E1A079 /* LaunchScreen.storyboard */,
 				FA45F60D1BFCF35A00E1A079 /* Info.plist */,
+				04D87D971CED0D9F0097404E /* BareLabor-Bridging-Header.h */,
 			);
 			path = BareLabor;
 			sourceTree = "<group>";
@@ -802,7 +804,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.barelabor.BareLabor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "BareLabor/BareLabor-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Volumes/MacWork/Github/BareLabor/BareLabor/BareLabor-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -821,7 +823,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.barelabor.BareLabor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "BareLabor/BareLabor-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Volumes/MacWork/Github/BareLabor/BareLabor/BareLabor-Bridging-Header.h";
 			};
 			name = Release;
 		};

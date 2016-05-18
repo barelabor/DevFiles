@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Mixpanel
 
 private enum TextfieldType: Int {
     case None = 0
@@ -180,6 +181,9 @@ class NeedTireViewController: BaseViewController, UITextFieldDelegate, UIPickerV
     
     @IBAction func didPressSubmitButton(sender: UIButton) {
         
+        let mixpanel = Mixpanel.sharedInstance()
+        
+        
         self.sizePrices = []
         self.vehiclePrices = []
         
@@ -197,6 +201,8 @@ class NeedTireViewController: BaseViewController, UITextFieldDelegate, UIPickerV
         switch(self.priceMode) {
             
         case .VehiclePrice:
+            
+            mixpanel.track("Vehicle Submit clicked")
             
             if ("" != year && "" != make && "" != model && "" != feature && "" != quantityVehicle) {
                 CommonUtils.showProgress(self.view, label: "Reading data...")
@@ -224,6 +230,8 @@ class NeedTireViewController: BaseViewController, UITextFieldDelegate, UIPickerV
             break;
             
         case .SizePrice:
+            
+            mixpanel.track("Size Submit clicked")
             
             if ("" != width && "" != ratio && "" != diameter && "" != sizeQuantity) {
                 CommonUtils.showProgress(self.view, label: "Reading data...")

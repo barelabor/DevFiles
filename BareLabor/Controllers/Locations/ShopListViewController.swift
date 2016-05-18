@@ -9,6 +9,7 @@
 import UIKit
 import CoreLocation
 import MBProgressHUD
+import Mixpanel
 
 enum TappedButton: Int {
     case Call = 0
@@ -30,6 +31,9 @@ class ShopListViewController: BaseViewController, UITableViewDataSource, UITable
         
         self.navigationItem.title = "Locations"
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        
+        let mixpanel = Mixpanel.sharedInstance()
+        mixpanel.track("Find A Location clicked")
         
         self.table.tableFooterView = UIView(frame: CGRectZero)
         

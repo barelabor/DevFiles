@@ -9,6 +9,7 @@ target 'BareLabor' do
     pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
     pod 'MBProgressHUD', '~> 0.9.1'
     pod 'UITextView+Placeholder'
+    pod 'Mixpanel'
 end
 
 target 'BareLaborTests' do
