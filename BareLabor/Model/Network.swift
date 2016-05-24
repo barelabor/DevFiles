@@ -443,7 +443,7 @@ class Network: NSObject {
             if status == "OK" && data != nil{
                 let intAveragePrice = data!["averagePrice"]! as! Int
                 let lowPrice = data!["lowPrice"] as! String!
-                let averagePrice = "\(intAveragePrice)!"
+                let averagePrice = "\(intAveragePrice)"
                 let highPrice = data!["highPrice"] as! String!
                 completion(lowPrice: lowPrice, averagePrice: averagePrice, highPrice: highPrice)
             }
