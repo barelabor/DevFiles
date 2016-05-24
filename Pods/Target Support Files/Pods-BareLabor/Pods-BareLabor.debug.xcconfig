@@ -2,8 +2,8 @@ CLANG_CXX_LIBRARY = compiler-default
 EMBEDDED_CONTENT_CONTAINS_SWIFT = YES
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
 LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
-OTHER_CFLAGS = $(inherited) -iquote "$CONFIGURATION_BUILD_DIR/Alamofire.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/Charts.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/MBProgressHUD.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/SDWebImage.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/SwiftyJSON.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/TesseractOCR.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/UITextView_Placeholder.framework/Headers"
-OTHER_LDFLAGS = $(inherited) -ObjC -weak_library /usr/lib/libstdc++.6.0.9.dylib -l"stdc++" -framework "Alamofire" -framework "Charts" -framework "MBProgressHUD" -framework "SDWebImage" -framework "SwiftyJSON" -framework "TesseractOCR" -framework "UITextView_Placeholder"
+OTHER_CFLAGS = $(inherited) -iquote "$CONFIGURATION_BUILD_DIR/Alamofire.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/Charts.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/MBProgressHUD.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/Mixpanel.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/SDWebImage.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/SwiftyJSON.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/TesseractOCR.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/UITextView_Placeholder.framework/Headers"
+OTHER_LDFLAGS = $(inherited) -ObjC -weak_library /usr/lib/libstdc++.6.0.9.dylib -l"stdc++" -framework "Alamofire" -framework "Charts" -framework "MBProgressHUD" -framework "Mixpanel" -framework "SDWebImage" -framework "SwiftyJSON" -framework "TesseractOCR" -framework "UITextView_Placeholder"
 OTHER_SWIFT_FLAGS = $(inherited) "-D" "COCOAPODS"
 PODS_FRAMEWORK_BUILD_PATH = $(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Pods-BareLabor
 PODS_ROOT = ${SRCROOT}/Pods
