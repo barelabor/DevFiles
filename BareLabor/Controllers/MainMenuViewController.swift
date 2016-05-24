@@ -16,6 +16,7 @@ class MainMenuViewController: BaseViewController {
     @IBOutlet weak var iJustNeedAShopButton: UIButton!
     @IBOutlet weak var viewHistoryButton: UIButton!
     @IBOutlet weak var registerBtn: UIButton!
+    @IBOutlet weak var repairCalcBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,7 @@ class MainMenuViewController: BaseViewController {
         self.iNeedATireButton.layer.borderColor = UIColor.whiteColor().CGColor
         self.iJustNeedAShopButton.layer.borderColor = UIColor.whiteColor().CGColor
         self.viewHistoryButton.layer.borderColor = UIColor.whiteColor().CGColor
+        self.repairCalcBtn.layer.borderColor = UIColor.whiteColor().CGColor
         
     }
     
@@ -151,6 +153,11 @@ class MainMenuViewController: BaseViewController {
         if let signUpController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier(SignUpViewController.storyboardID) as? SignUpViewController {
                 self.navigationController?.pushViewController(signUpController, animated: false)
             }
+    }
+    
+    @IBAction func repairCalcBtnTapped(sender: UIButton) {
+        let vehicleDetailsViewController = self.storyboard?.instantiateViewControllerWithIdentifier("vehicleDetailsViewController") as! VehicleDetailsViewController!
+        self.navigationController?.pushViewController(vehicleDetailsViewController, animated: true)
     }
 }
 

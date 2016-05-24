@@ -28,6 +28,7 @@
 		522BC94E1CE51FD000469DDF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 522BC94D1CE51FD000469DDF /* Assets.xcassets */; };
 		52612BAE1CE3BDDB002DF488 /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52612BAB1CE3BDDB002DF488 /* SCLAlertView.swift */; };
 		52612BAF1CE3BDDB002DF488 /* SCLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52612BAC1CE3BDDB002DF488 /* SCLExtensions.swift */; };
+		52B5EF5E1CF4F78400CD8881 /* RepairDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B5EF5D1CF4F78400CD8881 /* RepairDetailsViewController.swift */; };
 		A6A185159E34174FFF210F16 /* Pods_BareLabor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76743819A2C61F78C6CCC1F8 /* Pods_BareLabor.framework */; };
 		BF91895C1CD7D05A00918E1D /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = BF9189591CD7D05A00918E1D /* MBProgressHUD.m */; };
 		BF91895E1CD7D08000918E1D /* CommonUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF91895D1CD7D08000918E1D /* CommonUtils.swift */; };
@@ -100,6 +101,7 @@
 		522BC94D1CE51FD000469DDF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		52612BAB1CE3BDDB002DF488 /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SCLAlertView.swift; path = SCLAlertView/SCLAlertView.swift; sourceTree = "<group>"; };
 		52612BAC1CE3BDDB002DF488 /* SCLExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SCLExtensions.swift; path = SCLAlertView/SCLExtensions.swift; sourceTree = "<group>"; };
+		52B5EF5D1CF4F78400CD8881 /* RepairDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepairDetailsViewController.swift; sourceTree = "<group>"; };
 		76743819A2C61F78C6CCC1F8 /* Pods_BareLabor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BareLabor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		836418216BD73CF2E44A0AA4 /* Pods-BareLabor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BareLabor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BareLabor/Pods-BareLabor.debug.xcconfig"; sourceTree = "<group>"; };
 		BF9189581CD7D05A00918E1D /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -332,6 +334,7 @@
 				FA45F65B1BFE26F700E1A079 /* PartsAndLaborViewController.swift */,
 				FA45F6361BFCF61600E1A079 /* NeedTireViewController.swift */,
 				214B9CC81C009217002E0474 /* SettingsViewController.swift */,
+				52B5EF5D1CF4F78400CD8881 /* RepairDetailsViewController.swift */,
 				219DF27E1C0701CF001588A1 /* Chart */,
 				213BBF531C037DFE00E7942E /* Experience */,
 				214B9CD11C00A442002E0474 /* TermPrivacy */,
@@ -640,6 +643,7 @@
 				FA45F6451BFD024700E1A079 /* LocationCell.swift in Sources */,
 				FA45F64B1BFDE75F00E1A079 /* SearchViewController.swift in Sources */,
 				FA45F63E1BFCFB0000E1A079 /* BaseViewController.swift in Sources */,
+				52B5EF5E1CF4F78400CD8881 /* RepairDetailsViewController.swift in Sources */,
 				214B9CD71C00A467002E0474 /* TermPrivacyViewController.swift in Sources */,
 				BF9C573E1CD7C673008933E3 /* WebService.swift in Sources */,
 				BF91895E1CD7D08000918E1D /* CommonUtils.swift in Sources */,

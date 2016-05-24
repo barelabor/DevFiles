@@ -56,6 +56,9 @@ class Network: NSObject {
 	// Get neares locations list by user location
     static let getNearestLocations = baseURLString + "barelabor/api/index.php?method=findNearShop"
     
+    // Get Repairs
+    static let getRepairsURL = baseURLString + "barelabor/api/index.php?method=getRepairs"
+    
     // Headers JSON
     static let URLHeaders = ["Content-Type" : "application/json", "Accept" : "application/json"]
     
@@ -121,7 +124,7 @@ class Network: NSObject {
 							{
 								case .Success(let data):
 									completionHandler(data: data)
-								case .Failure(_, let _):
+								case .Failure(_, _):
 									completionHandler(data: nil)
 							}
 						}
@@ -417,6 +420,36 @@ class Network: NSObject {
             } else {
                 print("failed")
                 completion(data: nil, ratingArray: [])
+            }
+        }
+    }
+    
+    /**
+     GET Repairs
+     */
+    
+    func getRepairs(year: String, make: String, model: String, engineSize: String, part: String, completion: (lowPrice: String!, averagePrice:String!, highPrice: String!) -> Void) {
+        
+        let url = Network.getRepairsURL
+        let params = ["year":year,
+                      "make":make,
+                      "model":model,
+                      "engineSize": engineSize,
+                      "part": part]
+        
+        post(url, parameters: params) { (data) -> () in
+            print(data)
+            let status = data!["status"] as! String!
+            if status == "OK" && data != nil{
+                let intAveragePrice = data!["averagePrice"]! as! Int
+                let lowPrice = data!["lowPrice"] as! String!
+                let averagePrice = "\(intAveragePrice)!"
+                let highPrice = data!["highPrice"] as! String!
+                completion(lowPrice: lowPrice, averagePrice: averagePrice, highPrice: highPrice)
+            }
+             
+            else {
+                completion(lowPrice: "", averagePrice: "", highPrice: "")
             }
         }
     }

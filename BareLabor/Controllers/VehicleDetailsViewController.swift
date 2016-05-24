@@ -10,28 +10,21 @@ import UIKit
 
 private enum TextfieldType: Int {
     case None = 0
-    case VinNumber = 1
-    case Year = 2
-    case Make = 3
-    case Model = 4
-    case EngineSize = 5
-}
-
-private enum InfoType: Int {
-    case Photo = 0
-    case VinNumber = 1
-    case Details = 2
+    case Year = 1
+    case Make = 2
+    case Model = 3
+    case EngineSize = 4
+    case Part = 5
 }
 
 class VehicleDetailsViewController: BaseViewController, UITextFieldDelegate {
     
     @IBOutlet weak var table: UITableView!
-    @IBOutlet weak var insertPhotoButton: UIButton!
-    @IBOutlet weak var vinNumberTextField: UITextField!
     @IBOutlet weak var yearTextField: UITextField!
     @IBOutlet weak var makeTextField: UITextField!
     @IBOutlet weak var modelTextField: UITextField!
     @IBOutlet weak var engineSizeTextField: UITextField!
+    @IBOutlet weak var partTextField: UITextField!
     @IBOutlet weak var submitResultButton: UIButton!
     
     
@@ -45,11 +38,7 @@ class VehicleDetailsViewController: BaseViewController, UITextFieldDelegate {
         // Set VC title and back button
         self.navigationItem.title = "Vehicle Details"
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
-        
-        self.vinNumberTextField.layer.borderWidth = 2
-        self.vinNumberTextField.layer.borderColor = UIColor.whiteColor().CGColor
         var attributesDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName : UIFont.systemFontOfSize(18.0)]
-        self.vinNumberTextField.attributedPlaceholder = NSAttributedString(string: "VIN NUMBER", attributes: attributesDictionary)
         
         self.submitResultButton.layer.borderColor = UIColor.whiteColor().CGColor
         
@@ -57,7 +46,7 @@ class VehicleDetailsViewController: BaseViewController, UITextFieldDelegate {
         fixedWidthBarItem.width = 10
         
         let keyboardToolbarItems = [fixedWidthBarItem, UIBarButtonItem(image: UIImage(named: "ToolbarGoBackward"), style: .Plain, target: self, action: #selector(VehicleDetailsViewController.didPressKeyboardBackButton(_:))), fixedWidthBarItem, UIBarButtonItem(image: UIImage(named: "ToolbarGoForward"), style: .Plain, target: self, action: #selector(VehicleDetailsViewController.didPressKeyboardForwardButton(_:))), UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)]
-        let yearToolbarItems = [fixedWidthBarItem, UIBarButtonItem(image: UIImage(named: "ToolbarGoBackward"), style: .Plain, target: self, action: "didPressKeyboardBackButton:"), fixedWidthBarItem, UIBarButtonItem(image: UIImage(named: "ToolbarGoForward"), style: .Plain, target: self, action: #selector(VehicleDetailsViewController.didPressKeyboardForwardButton(_:))), UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil), UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(VehicleDetailsViewController.didPressHideKeyboardButton(_:)))]
+        let yearToolbarItems = [fixedWidthBarItem, UIBarButtonItem(image: UIImage(named: "ToolbarGoBackward"), style: .Plain, target: self, action: #selector(VehicleDetailsViewController.didPressKeyboardBackButton(_:))), fixedWidthBarItem, UIBarButtonItem(image: UIImage(named: "ToolbarGoForward"), style: .Plain, target: self, action: #selector(VehicleDetailsViewController.didPressKeyboardForwardButton(_:))), UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil), UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(VehicleDetailsViewController.didPressHideKeyboardButton(_:)))]
         
         let textfieldToolbar = UIToolbar(frame: CGRectMake(0, 0, Constants.Size.ScreenWidth.floatValue, 44))
         textfieldToolbar.items = keyboardToolbarItems
@@ -80,6 +69,11 @@ class VehicleDetailsViewController: BaseViewController, UITextFieldDelegate {
         self.engineSizeTextField.inputAccessoryView = textfieldToolbar
         attributesDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName : UIFont.systemFontOfSize(18.0)]
         self.engineSizeTextField.attributedPlaceholder = NSAttributedString(string: "Engine Size", attributes: attributesDictionary)
+        
+        self.partTextField.inputAccessoryView = textfieldToolbar
+        attributesDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName : UIFont.systemFontOfSize(18.0)]
+        self.partTextField.attributedPlaceholder = NSAttributedString(string: "Part", attributes: attributesDictionary)
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -111,6 +105,8 @@ class VehicleDetailsViewController: BaseViewController, UITextFieldDelegate {
             self.makeTextField.becomeFirstResponder()
         case .EngineSize:
             self.modelTextField.becomeFirstResponder()
+        case .Part:
+            self.engineSizeTextField.becomeFirstResponder()
         default:
             debugPrint("Not supported")
         }
@@ -125,6 +121,8 @@ class VehicleDetailsViewController: BaseViewController, UITextFieldDelegate {
             self.modelTextField.becomeFirstResponder()
         case .Model:
             self.engineSizeTextField.becomeFirstResponder()
+        case .EngineSize:
+            self.partTextField.becomeFirstResponder()
         default:
             debugPrint("Not supported")
         }
@@ -138,32 +136,48 @@ class VehicleDetailsViewController: BaseViewController, UITextFieldDelegate {
     }
     
     @IBAction func didPressSubmitButton(sender: UIButton) {
-        
-        if nil != self.photo {
-            
-        } else if "" != self.vinNumberTextField.text {
-            
+        if "" == self.yearTextField.text {
+            self.showNotificationAlertWithTitle("Please enter Year", message: nil, cancelButtonTitle: "OK", actionHandler: { (_) -> Void in
+                self.yearTextField.becomeFirstResponder()
+            })
+        } else if "" == self.makeTextField.text {
+            self.showNotificationAlertWithTitle("Please enter Make", message: nil, cancelButtonTitle: "OK", actionHandler: { (_) -> Void in
+                self.makeTextField.becomeFirstResponder()
+            })
+        } else if "" == self.modelTextField.text {
+            self.showNotificationAlertWithTitle("Please enter Model", message: nil, cancelButtonTitle: "OK", actionHandler: { (_) -> Void in
+                self.modelTextField.becomeFirstResponder()
+            })
+        } else if "" == self.partTextField.text {
+            self.showNotificationAlertWithTitle("Please enter Part", message: nil, cancelButtonTitle: "OK", actionHandler: { (_) -> Void in
+                self.partTextField.becomeFirstResponder()
+            })
         } else {
-            
-            if "" == self.yearTextField.text {
-                self.showNotificationAlertWithTitle("Please enter Year", message: nil, cancelButtonTitle: "OK", actionHandler: { (_) -> Void in
-                    self.yearTextField.becomeFirstResponder()
-                })
-            } else if "" == self.makeTextField.text {
-                self.showNotificationAlertWithTitle("Please enter Make", message: nil, cancelButtonTitle: "OK", actionHandler: { (_) -> Void in
-                    self.makeTextField.becomeFirstResponder()
-                })
-            } else if "" == self.modelTextField.text {
-                self.showNotificationAlertWithTitle("Please enter Model", message: nil, cancelButtonTitle: "OK", actionHandler: { (_) -> Void in
-                    self.modelTextField.becomeFirstResponder()
-                })
-            } else if "" == self.engineSizeTextField.text {
-                self.showNotificationAlertWithTitle("Please enter Engine Size", message: nil, cancelButtonTitle: "OK", actionHandler: { (_) -> Void in
-                    self.engineSizeTextField.becomeFirstResponder()
-                })
-            } else {
-                self.performSegueWithIdentifier(ShowSegue.VehicleDetails.Search.rawValue, sender: InfoType.Details.rawValue)
+            let year = self.yearTextField.text as String!
+            let make = self.makeTextField.text as String!
+            let model = self.modelTextField.text as String!
+            var engineSize: String = ""
+            if let engineSizeString = self.engineSizeTextField.text{
+                engineSize = engineSizeString
             }
+            let part = self.partTextField.text as String!
+            CommonUtils.showProgress(self.view, label: "Reading data...")
+            Network.sharedInstance.getRepairs(year!, make: make!, model: model!, engineSize: engineSize, part: part!, completion: { (lowPrice, averagePrice, highPrice) -> Void in
+                dispatch_async(dispatch_get_main_queue(), {
+                    CommonUtils.hideProgress()
+                })
+                if ("" != lowPrice && "" != averagePrice && "" != highPrice) {
+                    let repairDetailsViewController = self.storyboard?.instantiateViewControllerWithIdentifier("repairDetailsViewController") as! RepairDetailsViewController!
+                    repairDetailsViewController.lowPrice = lowPrice as String!
+                    repairDetailsViewController.averagePrice = averagePrice as String!
+                    repairDetailsViewController.highPrice = highPrice as String!
+                    repairDetailsViewController.repairName = self.partTextField.text!
+                    self.navigationController?.pushViewController(repairDetailsViewController, animated: true)
+                } else {
+                    CommonUtils.showAlert("Error", message: "There's no data you require in database.")
+                    return
+                }
+            })
         }
     }
     
@@ -187,8 +201,8 @@ class VehicleDetailsViewController: BaseViewController, UITextFieldDelegate {
             if let backButton = toolbar.items?[1] {
                 backButton.enabled = TextfieldType.Year != type
             }
-            if let forwardButton = toolbar.items?[3] {
-                forwardButton.enabled = TextfieldType.EngineSize != type
+            if let forwardButton = toolbar.items?[4] {
+                forwardButton.enabled = TextfieldType.Part != type
             }
         }
     }
@@ -233,23 +247,4 @@ class VehicleDetailsViewController: BaseViewController, UITextFieldDelegate {
         }
     }
     
-    // MARK: - Navigation
-
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        if segue.identifier == ShowSegue.VehicleDetails.Search.rawValue {
-            
-            if let senderValue = sender as? Int, goType = InfoType(rawValue: senderValue) {
-                
-                let controller = segue.destinationViewController as! SearchViewController
-                
-                switch goType {
-                case .Details:
-                    controller.inputCarInfo = CarInfo(year: self.yearTextField.text, make: self.makeTextField.text, model: self.modelTextField.text, engineSize: self.engineSizeTextField.text)
-                default:
-                    debugPrint("Unknown Type")
-                }
-            }
-        }
-    }
 }
