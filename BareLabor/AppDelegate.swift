@@ -33,23 +33,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if (!hasOnBoard) {
             NSUserDefaults.standardUserDefaults().setBool(true, forKey: "hasOnBorad")
             NSUserDefaults.standardUserDefaults().synchronize()
-            let firstPage = OnboardingContentViewController(title: "Options", body: "Send us an estimate for review, look up tire costs, & more!", image: UIImage(named: "barelabor1.jpeg"), buttonText: nil) { () -> Void in
+            let firstPage = OnboardingContentViewController(title: "Options", body: "Send us an estimate for review, look up tire costs, & more!", image: UIImage(named: "barelabor1.png"), buttonText: nil) { () -> Void in
             }
             
-            let secondPage = OnboardingContentViewController(title: "Options", body: "Send us an estimate for review, look up tire costs, & more!", image: UIImage(named: "barelabor2.jpeg"), buttonText: nil) { () -> Void in
+            let secondPage = OnboardingContentViewController(title: "Direct", body: "Send us a picture of any auto repair estimate & we'll send you back what it should cost.", image: UIImage(named: "barelabor2.png"), buttonText: nil) { () -> Void in
             }
             
-            let thirdPage = OnboardingContentViewController(title: "Options", body: "Send us an estimate for review, look up tire costs, & more!", image: UIImage(named: "barelabor3.jpeg"), buttonText: nil) { () -> Void in
+            let thirdPage = OnboardingContentViewController(title: "Results", body: "Click on a bar to pull up detailed pricing information.", image: UIImage(named: "barelabor3.png"), buttonText: nil) { () -> Void in
             }
             
-            let forthPage = OnboardingContentViewController(title: "Options", body: "Send us an estimate for review, look up tire costs, & more!", image: UIImage(named: "barelabor4.jpeg"), buttonText: nil) { () -> Void in
+            let forthPage = OnboardingContentViewController(title: "Ratings", body: "Our database contains over 1.5 Million tires, but we only display the best ones to you!", image: UIImage(named: "barelabor4.png"), buttonText: nil) { () -> Void in
             }
             
-            let fivthPage = OnboardingContentViewController(title: "Options", body: "Send us an estimate for review, look up tire costs, & more!", image: UIImage(named: "barelabor5.jpeg"), buttonText: "Get Started") { () -> Void in
+            let fivthPage = OnboardingContentViewController(title: "Reliability", body: "Locations on our app offer nationwide warranties & have ASE Certified Technicians.", image: UIImage(named: "barelabor5.png"), buttonText: "Get Started") { () -> Void in
                 self.window?.rootViewController = navigationController
             }
-            fivthPage.actionButton.setTitleColor(UIColor.greenColor(), forState: .Normal)
-            let onBoardingVC: OnboardingViewController = OnboardingViewController(backgroundImage:  UIImage(named: "barelabor1.jpeg"), contents: [firstPage, secondPage, thirdPage, forthPage, fivthPage])
+            fivthPage.actionButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+            let onBoardingVC: OnboardingViewController = OnboardingViewController(backgroundImage:  nil, contents: [firstPage, secondPage, thirdPage, forthPage, fivthPage])
             onBoardingVC.shouldFadeTransitions = true
             onBoardingVC.shouldFadeTransitions = true
             onBoardingVC.fadePageControlOnLastPage = true

@@ -28,11 +28,6 @@
 		522BC94E1CE51FD000469DDF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 522BC94D1CE51FD000469DDF /* Assets.xcassets */; };
 		52612BAE1CE3BDDB002DF488 /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52612BAB1CE3BDDB002DF488 /* SCLAlertView.swift */; };
 		52612BAF1CE3BDDB002DF488 /* SCLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52612BAC1CE3BDDB002DF488 /* SCLExtensions.swift */; };
-		526D54A61CF603EA00FFB805 /* barelabor1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 526D54A01CF603EA00FFB805 /* barelabor1.jpeg */; };
-		526D54A71CF603EA00FFB805 /* barelabor2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 526D54A11CF603EA00FFB805 /* barelabor2.jpeg */; };
-		526D54A81CF603EA00FFB805 /* barelabor3.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 526D54A21CF603EA00FFB805 /* barelabor3.jpeg */; };
-		526D54A91CF603EA00FFB805 /* barelabor4.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 526D54A31CF603EA00FFB805 /* barelabor4.jpeg */; };
-		526D54AA1CF603EA00FFB805 /* barelabor5.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 526D54A41CF603EA00FFB805 /* barelabor5.jpeg */; };
 		526D54AB1CF603EA00FFB805 /* Thumbs.db in Resources */ = {isa = PBXBuildFile; fileRef = 526D54A51CF603EA00FFB805 /* Thumbs.db */; };
 		526D54AD1CF603F600FFB805 /* help.png in Resources */ = {isa = PBXBuildFile; fileRef = 526D54AC1CF603F600FFB805 /* help.png */; };
 		526D54B41CF6056100FFB805 /* OnboardingContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 526D54B01CF6056100FFB805 /* OnboardingContentViewController.m */; };
@@ -42,6 +37,11 @@
 		526D54B81CF606FD00FFB805 /* OnboardingContentViewController_Private.h in Resources */ = {isa = PBXBuildFile; fileRef = 526D54B11CF6056100FFB805 /* OnboardingContentViewController_Private.h */; };
 		526D54B91CF606FD00FFB805 /* OnboardingViewController.h in Resources */ = {isa = PBXBuildFile; fileRef = 526D54B21CF6056100FFB805 /* OnboardingViewController.h */; };
 		526D54BA1CF606FD00FFB805 /* OnboardingViewController.m in Resources */ = {isa = PBXBuildFile; fileRef = 526D54B31CF6056100FFB805 /* OnboardingViewController.m */; };
+		526D54C21CF6309C00FFB805 /* barelabor1.png in Resources */ = {isa = PBXBuildFile; fileRef = 526D54BD1CF6309B00FFB805 /* barelabor1.png */; };
+		526D54C31CF6309C00FFB805 /* barelabor2.png in Resources */ = {isa = PBXBuildFile; fileRef = 526D54BE1CF6309B00FFB805 /* barelabor2.png */; };
+		526D54C41CF6309C00FFB805 /* barelabor3.png in Resources */ = {isa = PBXBuildFile; fileRef = 526D54BF1CF6309B00FFB805 /* barelabor3.png */; };
+		526D54C51CF6309C00FFB805 /* barelabor4.png in Resources */ = {isa = PBXBuildFile; fileRef = 526D54C01CF6309B00FFB805 /* barelabor4.png */; };
+		526D54C61CF6309C00FFB805 /* barelabor5.png in Resources */ = {isa = PBXBuildFile; fileRef = 526D54C11CF6309B00FFB805 /* barelabor5.png */; };
 		52B5EF5E1CF4F78400CD8881 /* RepairDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B5EF5D1CF4F78400CD8881 /* RepairDetailsViewController.swift */; };
 		A6A185159E34174FFF210F16 /* Pods_BareLabor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76743819A2C61F78C6CCC1F8 /* Pods_BareLabor.framework */; };
 		BF91895C1CD7D05A00918E1D /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = BF9189591CD7D05A00918E1D /* MBProgressHUD.m */; };
@@ -116,11 +116,6 @@
 		522BC94D1CE51FD000469DDF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		52612BAB1CE3BDDB002DF488 /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SCLAlertView.swift; path = SCLAlertView/SCLAlertView.swift; sourceTree = "<group>"; };
 		52612BAC1CE3BDDB002DF488 /* SCLExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SCLExtensions.swift; path = SCLAlertView/SCLExtensions.swift; sourceTree = "<group>"; };
-		526D54A01CF603EA00FFB805 /* barelabor1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = barelabor1.jpeg; sourceTree = "<group>"; };
-		526D54A11CF603EA00FFB805 /* barelabor2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = barelabor2.jpeg; sourceTree = "<group>"; };
-		526D54A21CF603EA00FFB805 /* barelabor3.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = barelabor3.jpeg; sourceTree = "<group>"; };
-		526D54A31CF603EA00FFB805 /* barelabor4.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = barelabor4.jpeg; sourceTree = "<group>"; };
-		526D54A41CF603EA00FFB805 /* barelabor5.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = barelabor5.jpeg; sourceTree = "<group>"; };
 		526D54A51CF603EA00FFB805 /* Thumbs.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = Thumbs.db; sourceTree = "<group>"; };
 		526D54AC1CF603F600FFB805 /* help.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help.png; sourceTree = "<group>"; };
 		526D54AF1CF6056100FFB805 /* OnboardingContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnboardingContentViewController.h; sourceTree = "<group>"; };
@@ -128,6 +123,11 @@
 		526D54B11CF6056100FFB805 /* OnboardingContentViewController_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnboardingContentViewController_Private.h; sourceTree = "<group>"; };
 		526D54B21CF6056100FFB805 /* OnboardingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnboardingViewController.h; sourceTree = "<group>"; };
 		526D54B31CF6056100FFB805 /* OnboardingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnboardingViewController.m; sourceTree = "<group>"; };
+		526D54BD1CF6309B00FFB805 /* barelabor1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barelabor1.png; sourceTree = "<group>"; };
+		526D54BE1CF6309B00FFB805 /* barelabor2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barelabor2.png; sourceTree = "<group>"; };
+		526D54BF1CF6309B00FFB805 /* barelabor3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barelabor3.png; sourceTree = "<group>"; };
+		526D54C01CF6309B00FFB805 /* barelabor4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barelabor4.png; sourceTree = "<group>"; };
+		526D54C11CF6309B00FFB805 /* barelabor5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barelabor5.png; sourceTree = "<group>"; };
 		52B5EF5D1CF4F78400CD8881 /* RepairDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepairDetailsViewController.swift; sourceTree = "<group>"; };
 		76743819A2C61F78C6CCC1F8 /* Pods_BareLabor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BareLabor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		836418216BD73CF2E44A0AA4 /* Pods-BareLabor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BareLabor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BareLabor/Pods-BareLabor.debug.xcconfig"; sourceTree = "<group>"; };
@@ -266,11 +266,11 @@
 		526D549F1CF603EA00FFB805 /* Intro Images */ = {
 			isa = PBXGroup;
 			children = (
-				526D54A01CF603EA00FFB805 /* barelabor1.jpeg */,
-				526D54A11CF603EA00FFB805 /* barelabor2.jpeg */,
-				526D54A21CF603EA00FFB805 /* barelabor3.jpeg */,
-				526D54A31CF603EA00FFB805 /* barelabor4.jpeg */,
-				526D54A41CF603EA00FFB805 /* barelabor5.jpeg */,
+				526D54BD1CF6309B00FFB805 /* barelabor1.png */,
+				526D54BE1CF6309B00FFB805 /* barelabor2.png */,
+				526D54BF1CF6309B00FFB805 /* barelabor3.png */,
+				526D54C01CF6309B00FFB805 /* barelabor4.png */,
+				526D54C11CF6309B00FFB805 /* barelabor5.png */,
 				526D54A51CF603EA00FFB805 /* Thumbs.db */,
 			);
 			path = "Intro Images";
@@ -586,16 +586,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				526D54C31CF6309C00FFB805 /* barelabor2.png in Resources */,
 				526D54B61CF606FD00FFB805 /* OnboardingContentViewController.h in Resources */,
 				526D54B71CF606FD00FFB805 /* OnboardingContentViewController.m in Resources */,
 				526D54B81CF606FD00FFB805 /* OnboardingContentViewController_Private.h in Resources */,
 				526D54B91CF606FD00FFB805 /* OnboardingViewController.h in Resources */,
 				526D54BA1CF606FD00FFB805 /* OnboardingViewController.m in Resources */,
-				526D54A81CF603EA00FFB805 /* barelabor3.jpeg in Resources */,
+				526D54C51CF6309C00FFB805 /* barelabor4.png in Resources */,
 				218470671C0F41B40016DCF5 /* SlideMenuTableViewCell.xib in Resources */,
-				526D54A71CF603EA00FFB805 /* barelabor2.jpeg in Resources */,
 				522BC94A1CE516F300469DDF /* close_btn.png in Resources */,
-				526D54A61CF603EA00FFB805 /* barelabor1.jpeg in Resources */,
+				526D54C41CF6309C00FFB805 /* barelabor3.png in Resources */,
 				FA45F60C1BFCF35A00E1A079 /* LaunchScreen.storyboard in Resources */,
 				FA45F6501BFDE86800E1A079 /* CarInfoView.xib in Resources */,
 				219DF2831C0701CF001588A1 /* ChartView.xib in Resources */,
@@ -605,11 +605,11 @@
 				526D54AB1CF603EA00FFB805 /* Thumbs.db in Resources */,
 				2184706A1C0F7CC00016DCF5 /* Term of use.txt in Resources */,
 				2184705F1C0CA7E10016DCF5 /* ImagePickerControlsView.xib in Resources */,
-				526D54A91CF603EA00FFB805 /* barelabor4.jpeg in Resources */,
+				526D54C21CF6309C00FFB805 /* barelabor1.png in Resources */,
+				526D54C61CF6309C00FFB805 /* barelabor5.png in Resources */,
 				213BBF4D1C032F5B00E7942E /* Privacy Policy.txt in Resources */,
 				526D54AD1CF603F600FFB805 /* help.png in Resources */,
 				522BC94B1CE516F300469DDF /* left_arrow.png in Resources */,
-				526D54AA1CF603EA00FFB805 /* barelabor5.jpeg in Resources */,
 				FA45F6071BFCF35A00E1A079 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

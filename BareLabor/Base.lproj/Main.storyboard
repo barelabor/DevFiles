@@ -232,7 +232,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oho-a5-BAi" userLabel="Settings Button">
-                                <rect key="frame" x="284" y="534" width="26" height="26"/>
+                                <rect key="frame" x="274" y="534" width="26" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="FZc-gm-amN"/>
                                     <constraint firstAttribute="width" constant="26" id="K6k-o3-AbJ"/>
@@ -264,6 +264,7 @@
                             <constraint firstItem="LIB-Bk-nN3" firstAttribute="top" secondItem="3UX-c9-o9g" secondAttribute="bottom" constant="28" id="4sl-kh-9z4"/>
                             <constraint firstItem="Fel-ML-5cS" firstAttribute="top" secondItem="mVp-9Q-K5j" secondAttribute="bottom" constant="13" id="6rj-m3-c6t"/>
                             <constraint firstItem="Fel-ML-5cS" firstAttribute="top" secondItem="iPZ-nf-FEJ" secondAttribute="bottom" constant="8" id="Ba7-Mn-cCB"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="oho-a5-BAi" secondAttribute="bottom" constant="8" id="CeV-6z-zU8"/>
                             <constraint firstAttribute="trailingMargin" secondItem="5vb-LU-yP0" secondAttribute="trailing" constant="-20" id="F7O-tF-hhK"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="fhi-qL-e4c" secondAttribute="bottom" id="Fez-iN-r5G"/>
                             <constraint firstItem="mVp-9Q-K5j" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Ghi-dK-cdq"/>
@@ -293,6 +294,7 @@
                             <constraint firstItem="fhi-qL-e4c" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="jcw-7D-SI5"/>
                             <constraint firstItem="LIB-Bk-nN3" firstAttribute="leading" secondItem="3UX-c9-o9g" secondAttribute="leading" id="jnF-Cd-xlP"/>
                             <constraint firstItem="iPZ-nf-FEJ" firstAttribute="trailing" secondItem="WFJ-qH-eR2" secondAttribute="trailing" id="luH-Aa-0sE"/>
+                            <constraint firstItem="oho-a5-BAi" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" constant="8" id="mv2-Ci-b3y"/>
                             <constraint firstAttribute="trailingMargin" secondItem="5vb-LU-yP0" secondAttribute="trailing" constant="5" id="o99-qU-nVW"/>
                             <constraint firstAttribute="trailingMargin" secondItem="iPZ-nf-FEJ" secondAttribute="trailing" constant="-5" id="prl-AR-NDU"/>
                             <constraint firstAttribute="trailing" secondItem="mVp-9Q-K5j" secondAttribute="trailing" id="rSY-th-pvP"/>
@@ -312,7 +314,9 @@
                                 <exclude reference="bvt-EM-9rC"/>
                                 <exclude reference="dCJ-di-3tX"/>
                                 <exclude reference="fb3-Hd-LBJ"/>
+                                <exclude reference="UAU-3o-bFm"/>
                                 <exclude reference="K0X-Qn-sIH"/>
+                                <exclude reference="gsz-S4-CRx"/>
                                 <exclude reference="hVw-Af-sAk"/>
                             </mask>
                         </variation>
@@ -482,7 +486,7 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="72379A13-7FDC-4BA5-9DC1-D95E171ABD8F" translatesAutoresizingMaskIntoConstraints="NO" id="NGP-Ov-3NL">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="00E40BC5-085B-491F-813C-68029285C3DD" translatesAutoresizingMaskIntoConstraints="NO" id="NGP-Ov-3NL">
                                                     <rect key="frame" x="305" y="123" width="8" height="13"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="8" id="4xU-XH-Bz9"/>
@@ -3140,7 +3144,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="72379A13-7FDC-4BA5-9DC1-D95E171ABD8F" width="5" height="8">
+        <image name="00E40BC5-085B-491F-813C-68029285C3DD" width="5" height="8">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
