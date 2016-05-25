@@ -212,7 +212,7 @@
                                     <segue destination="Zub-c5-ex5" kind="push" id="McL-6Y-00z"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="1113" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iPZ-nf-FEJ">
+                            <button hidden="YES" opaque="NO" tag="1113" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iPZ-nf-FEJ">
                                 <rect key="frame" x="15" y="105" width="290" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="vE5-jb-cwo"/>
@@ -486,7 +486,7 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="8F174A4C-67B1-47D3-97CA-A78677BAB47A" translatesAutoresizingMaskIntoConstraints="NO" id="NGP-Ov-3NL">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="9444FDF4-F859-4438-A808-953F5C48FCEC" translatesAutoresizingMaskIntoConstraints="NO" id="NGP-Ov-3NL">
                                                     <rect key="frame" x="305" y="123" width="8" height="13"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="8" id="4xU-XH-Bz9"/>
@@ -3144,7 +3144,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="8F174A4C-67B1-47D3-97CA-A78677BAB47A" width="5" height="8">
+        <image name="9444FDF4-F859-4438-A808-953F5C48FCEC" width="5" height="8">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
