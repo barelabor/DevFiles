@@ -18,13 +18,57 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+        let hasOnBoard:Bool = NSUserDefaults.standardUserDefaults().boolForKey("hasOnBoard")
+        print("sadfasdfasdfsdf", hasOnBoard)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainViewController = storyboard.instantiateViewControllerWithIdentifier("MainMenuViewController") as! MainMenuViewController
+        let navigationController = UINavigationController(rootViewController: mainViewController)
+        
         UINavigationBar.appearance().setBackgroundImage(UIImage(named: "NavigationBar"), forBarMetrics: UIBarMetrics.Default)
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
         
         
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+        if (!hasOnBoard) {
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "hasOnBorad")
+            NSUserDefaults.standardUserDefaults().synchronize()
+            let firstPage = OnboardingContentViewController(title: "Options", body: "Send us an estimate for review, look up tire costs, & more!", image: UIImage(named: "barelabor1.jpeg"), buttonText: nil) { () -> Void in
+            }
+            
+            let secondPage = OnboardingContentViewController(title: "Options", body: "Send us an estimate for review, look up tire costs, & more!", image: UIImage(named: "barelabor2.jpeg"), buttonText: nil) { () -> Void in
+            }
+            
+            let thirdPage = OnboardingContentViewController(title: "Options", body: "Send us an estimate for review, look up tire costs, & more!", image: UIImage(named: "barelabor3.jpeg"), buttonText: nil) { () -> Void in
+            }
+            
+            let forthPage = OnboardingContentViewController(title: "Options", body: "Send us an estimate for review, look up tire costs, & more!", image: UIImage(named: "barelabor4.jpeg"), buttonText: nil) { () -> Void in
+            }
+            
+            let fivthPage = OnboardingContentViewController(title: "Options", body: "Send us an estimate for review, look up tire costs, & more!", image: UIImage(named: "barelabor5.jpeg"), buttonText: "Get Started") { () -> Void in
+                self.window?.rootViewController = navigationController
+            }
+            fivthPage.actionButton.setTitleColor(UIColor.greenColor(), forState: .Normal)
+            let onBoardingVC: OnboardingViewController = OnboardingViewController(backgroundImage:  UIImage(named: "barelabor1.jpeg"), contents: [firstPage, secondPage, thirdPage, forthPage, fivthPage])
+            onBoardingVC.shouldFadeTransitions = true
+            onBoardingVC.shouldFadeTransitions = true
+            onBoardingVC.fadePageControlOnLastPage = true
+            onBoardingVC.fadeSkipButtonOnLastPage = true
+            
+            onBoardingVC.allowSkipping = true
+            onBoardingVC.skipHandler = {
+                self.window?.rootViewController = navigationController
+            }
+            self.window = UIWindow.init(frame: UIScreen.mainScreen().bounds)
+            self.window!.backgroundColor = UIColor.whiteColor()
+
+            self.window?.rootViewController = onBoardingVC
+        }
+        else{
+            self.window?.rootViewController = navigationController
+        }
         
+        self.window?.makeKeyAndVisible()
 //        let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
 //        
 //        application.registerUserNotificationSettings( settings )

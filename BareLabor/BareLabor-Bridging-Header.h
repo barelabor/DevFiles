@@ -10,4 +10,6 @@
 #define BareLabor_Bridging_Header_h
 
 #import "Mixpanel/Mixpanel.h"
+#import "OnboardingViewController.h"
+#import "OnboardingContentViewController.h"
 #endif /* BareLabor_Bridging_Header_h */

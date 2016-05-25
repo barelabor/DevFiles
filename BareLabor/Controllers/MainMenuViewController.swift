@@ -161,5 +161,39 @@ class MainMenuViewController: BaseViewController {
         let vehicleDetailsViewController = self.storyboard?.instantiateViewControllerWithIdentifier("vehicleDetailsViewController") as! VehicleDetailsViewController!
         self.navigationController?.pushViewController(vehicleDetailsViewController, animated: true)
     }
+    @IBAction func tutorBtnTapped(sender: UIButton) {
+        let firstPage = OnboardingContentViewController(title: "Options", body: "Send us an estimate for review, look up tire costs, & more!", image: UIImage(named: "barelabor1.jpeg"), buttonText: nil) { () -> Void in
+        }
+        
+        let secondPage = OnboardingContentViewController(title: "Options", body: "Send us an estimate for review, look up tire costs, & more!", image: UIImage(named: "barelabor2.jpeg"), buttonText: nil) { () -> Void in
+        }
+        
+        let thirdPage = OnboardingContentViewController(title: "Options", body: "Send us an estimate for review, look up tire costs, & more!", image: UIImage(named: "barelabor3.jpeg"), buttonText: nil) { () -> Void in
+        }
+        
+        let forthPage = OnboardingContentViewController(title: "Options", body: "Send us an estimate for review, look up tire costs, & more!", image: UIImage(named: "barelabor4.jpeg"), buttonText: nil) { () -> Void in
+        }
+        
+        let fivthPage = OnboardingContentViewController(title: "Options", body: "Send us an estimate for review, look up tire costs, & more!", image: UIImage(named: "barelabor5.jpeg"), buttonText: "Get Started") { () -> Void in
+            self.showMainView()
+        }
+        fivthPage.actionButton.setTitleColor(UIColor.greenColor(), forState: .Normal)
+        let onBoardingVC: OnboardingViewController = OnboardingViewController(backgroundImage:  UIImage(named: "barelabor1.jpeg"), contents: [firstPage, secondPage, thirdPage, forthPage, fivthPage])
+        onBoardingVC.shouldFadeTransitions = true
+        onBoardingVC.shouldFadeTransitions = true
+        onBoardingVC.fadePageControlOnLastPage = true
+        onBoardingVC.fadeSkipButtonOnLastPage = true
+        
+        onBoardingVC.allowSkipping = true
+        onBoardingVC.skipHandler = {
+            self.showMainView()
+        }
+        self.navigationController?.pushViewController(onBoardingVC, animated: true)
+    }
+    func showMainView() {
+        
+        let mainViewController = self.storyboard?.instantiateViewControllerWithIdentifier("MainMenuViewController") as! MainMenuViewController!
+        self.navigationController!.pushViewController(mainViewController, animated: true)
+    }
 }
 
