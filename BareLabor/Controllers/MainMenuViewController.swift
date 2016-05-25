@@ -162,7 +162,7 @@ class MainMenuViewController: BaseViewController {
         self.navigationController?.pushViewController(vehicleDetailsViewController, animated: true)
     }
     @IBAction func tutorBtnTapped(sender: UIButton) {
-        let firstPage = OnboardingContentViewController(title: "Options", body: "Send us an estimate for review, look up tire costs, & more!", image: UIImage(named: "barelabor1.png"), buttonText: nil) { () -> Void in
+        let firstPage = OnboardingContentViewController(title: "Options", body: "Send us an estimate for review,look up tire costs, & more!", image: UIImage(named: "barelabor1.png"), buttonText: nil) { () -> Void in
         }
         
         let secondPage = OnboardingContentViewController(title: "Direct", body: "Send us a picture of any auto repair estimate & we'll send you back what it should cost.", image: UIImage(named: "barelabor2.png"), buttonText: nil) { () -> Void in
