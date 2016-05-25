@@ -2,7 +2,7 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'BareLabor' do
-    pod 'TesseractOCRiOS', '~> 4.0'
+#    pod 'TesseractOCRiOS', '~> 4.0'
     pod 'Charts'
     pod 'Alamofire', '~> 2.0'
     pod 'SDWebImage'
