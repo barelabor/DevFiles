@@ -269,9 +269,10 @@ NSString * const kOnboardActionButtonAccessibilityIdentifier = @"OnboardActionBu
     self.titleLabel.frame = CGRectMake(20, 300, viewWidth, 35);
     [self.titleLabel setFont:[UIFont systemFontOfSize:35]];
     [self.titleLabel setTextAlignment:NSTextAlignmentLeft];
-    self.bodyLabel.frame = CGRectMake(20, 300, viewWidth/2+50, 200);
+    self.bodyLabel.frame = CGRectMake(20, 350, viewWidth/2+50, 200);
     [self.bodyLabel setFont:[UIFont systemFontOfSize:20]];
     [self.bodyLabel setTextAlignment:NSTextAlignmentLeft];
+    [self.bodyLabel sizeToFit];
 //    self.titleLabel.frame = CGRectMake(xPadding, titleYOrigin, contentWidth, 0);
 //    [self.titleLabel sizeToFit];
 //    self.titleLabel.frame = CGRectMake(xPadding, titleYOrigin, contentWidth, CGRectGetHeight(self.titleLabel.frame));

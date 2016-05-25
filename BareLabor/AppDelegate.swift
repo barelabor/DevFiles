@@ -18,8 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        let hasOnBoard:Bool = NSUserDefaults.standardUserDefaults().boolForKey("hasOnBoard")
-        print("sadfasdfasdfsdf", hasOnBoard)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let mainViewController = storyboard.instantiateViewControllerWithIdentifier("MainMenuViewController") as! MainMenuViewController
         let navigationController = UINavigationController(rootViewController: mainViewController)
@@ -30,8 +28,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
-        if (!hasOnBoard) {
-            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "hasOnBorad")
+        let hasOnBoard = NSUserDefaults.standardUserDefaults().valueForKey("hadTutorial") as? String?
+        print("we are", hasOnBoard)
+        if NSUserDefaults.standardUserDefaults().valueForKey("hadTutorial") != nil {
+            self.window?.rootViewController = navigationController
+        }
+        else{
+            
+            NSUserDefaults.standardUserDefaults().setValue("hasIt", forKey: "hadTutorial")
             NSUserDefaults.standardUserDefaults().synchronize()
             let firstPage = OnboardingContentViewController(title: "Options", body: "Send us an estimate for review, look up tire costs, & more!", image: UIImage(named: "barelabor1.png"), buttonText: nil) { () -> Void in
             }
@@ -61,11 +65,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             self.window = UIWindow.init(frame: UIScreen.mainScreen().bounds)
             self.window!.backgroundColor = UIColor.whiteColor()
-
+            
             self.window?.rootViewController = onBoardingVC
-        }
-        else{
-            self.window?.rootViewController = navigationController
         }
         
         self.window?.makeKeyAndVisible()
