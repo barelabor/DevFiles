@@ -441,10 +441,12 @@ class Network: NSObject {
             print(data)
             let status = data!["status"] as! String!
             if status == "OK" && data != nil{
+                let intLowPrice = data!["lowPrice"]! as! Int
                 let intAveragePrice = data!["averagePrice"]! as! Int
-                let lowPrice = data!["lowPrice"] as! String!
+                let intHighPrice = data!["highPrice"]! as! Int
+                let lowPrice =  "\(intLowPrice)"
                 let averagePrice = "\(intAveragePrice)"
-                let highPrice = data!["highPrice"] as! String!
+                let highPrice = "\(intHighPrice)"
                 completion(lowPrice: lowPrice, averagePrice: averagePrice, highPrice: highPrice)
             }
              

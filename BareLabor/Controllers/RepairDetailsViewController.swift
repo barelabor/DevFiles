@@ -22,7 +22,7 @@ class RepairDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.repairNameLabel.text = "$" + self.repairName as String!
+        self.repairNameLabel.text = self.repairName as String!
         self.lowPriceLabel.text = "$" + self.lowPrice as String!
         self.averagePriceLabel.text = "$" + self.averagePrice
         self.highPriceLabel.text = "$" + self.highPrice as String!
