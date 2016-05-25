@@ -266,10 +266,11 @@ NSString * const kOnboardActionButtonAccessibilityIdentifier = @"OnboardActionBu
     
 //    CGFloat titleYOrigin = CGRectGetMaxY(self.iconImageView.frame) + self.underIconPadding;
     
-    self.titleLabel.frame = CGRectMake(0, 100, viewWidth, 35);
+    self.titleLabel.frame = CGRectMake(20, 100, viewWidth-40, 35);
     [self.titleLabel setFont:[UIFont systemFontOfSize:35]];
-    self.bodyLabel.frame = CGRectMake(0, 180, viewWidth, 400);
+    self.bodyLabel.frame = CGRectMake(20, 180, viewWidth-40, 400);
     [self.bodyLabel setFont:[UIFont systemFontOfSize:20]];
+    self.bodyLabel.lineBreakMode = NSLineBreakByWordWrapping;
     [self.bodyLabel sizeToFit];
 //    self.titleLabel.frame = CGRectMake(xPadding, titleYOrigin, contentWidth, 0);
 //    [self.titleLabel sizeToFit];
