@@ -270,6 +270,30 @@ class ChartViewController: UIViewController {
             })
             actionSheetController.addAction(firestoneAction)
             
+            let ntbAction = UIAlertAction(title: "NTB", style: .Default, handler: { action -> Void in
+                if let tirerackUrl = NSURL(string: "https://ntb.com/tires/onlineschedule/signin/onlineschedulelogin.jsp"){
+                    if (UIApplication.sharedApplication().openURL(tirerackUrl)){
+                        print("successfully opened")
+                    }
+                }
+                else{
+                    print("invalid url")
+                }
+            })
+            actionSheetController.addAction(ntbAction)
+            
+            let meinekeAction = UIAlertAction(title: "Meineke", style: .Default, handler: { action -> Void in
+                if let tirerackUrl = NSURL(string: "http://www.meineke.com"){
+                    if (UIApplication.sharedApplication().openURL(tirerackUrl)){
+                        print("successfully opened")
+                    }
+                }
+                else{
+                    print("invalid url")
+                }
+            })
+            actionSheetController.addAction(meinekeAction)
+            
             let cancelAction = UIAlertAction(title: "Cancel", style: .Default, handler: { action -> Void in
                 actionSheetController.dismissViewControllerAnimated(true, completion: nil)
             })
@@ -395,6 +419,42 @@ class ChartViewController: UIViewController {
                 }
             })
             actionSheetController.addAction(firestoneAction)
+            
+            let ntbAction = UIAlertAction(title: "NTB", style: .Default, handler: { action -> Void in
+                if let tirerackUrl = NSURL(string: "https://ntb.com/tires/onlineschedule/signin/onlineschedulelogin.jsp"){
+                    if (UIApplication.sharedApplication().openURL(tirerackUrl)){
+                        print("successfully opened")
+                    }
+                }
+                else{
+                    print("invalid url")
+                }
+            })
+            actionSheetController.addAction(ntbAction)
+            
+            let discountTireAction = UIAlertAction(title: "Discount Tire", style: .Default, handler: { action -> Void in
+                if let tirerackUrl = NSURL(string: "http://www.discounttire.com/dtcs/makeAppointment.do?sll=hpAppointmentsHeader"){
+                    if (UIApplication.sharedApplication().openURL(tirerackUrl)){
+                        print("successfully opened")
+                    }
+                }
+                else{
+                    print("invalid url")
+                }
+            })
+            actionSheetController.addAction(discountTireAction)
+            
+            let meinekeAction = UIAlertAction(title: "Meineke", style: .Default, handler: { action -> Void in
+                if let tirerackUrl = NSURL(string: "http://www.meineke.com"){
+                    if (UIApplication.sharedApplication().openURL(tirerackUrl)){
+                        print("successfully opened")
+                    }
+                }
+                else{
+                    print("invalid url")
+                }
+            })
+            actionSheetController.addAction(meinekeAction)
             
             let cancelAction = UIAlertAction(title: "Cancel", style: .Default, handler: { action -> Void in
                 actionSheetController.dismissViewControllerAnimated(true, completion: nil)
