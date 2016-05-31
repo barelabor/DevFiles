@@ -16,8 +16,13 @@ private enum TextfieldType: Int {
     case EngineSize = 4
     case Part = 5
 }
-
-class VehicleDetailsViewController: BaseViewController, UITextFieldDelegate {
+private enum PickerType: Int {
+    case YearPicker = 0
+    case MakePicker = 1
+    case ModelPicker = 2
+    case EnginePicker = 3
+}
+class VehicleDetailsViewController: BaseViewController, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var yearTextField: UITextField!
@@ -32,47 +37,28 @@ class VehicleDetailsViewController: BaseViewController, UITextFieldDelegate {
     private var selectedTextfieldFrame: CGRect = CGRectZero
     private var selectedTextfieldType: TextfieldType = .None
     private var keyboardHeight: CGFloat = 0
-
+    
+    // pickers by vehicle
+    private var yearPickerView: UIPickerView!
+    private var makePickerView: UIPickerView!
+    private var modelPickerView: UIPickerView!
+    private var enginePickerView: UIPickerView!
+    
+    private var years: [String] = []
+    private var makes: [String] = []
+    private var models: [String] = []
+    private var engines: [String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Set VC title and back button
         self.navigationItem.title = "Vehicle Details"
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
-        var attributesDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName : UIFont.systemFontOfSize(18.0)]
+
+        self.setUpTextFields()
         
-        self.submitResultButton.layer.borderColor = UIColor.whiteColor().CGColor
-        
-        let fixedWidthBarItem = UIBarButtonItem(barButtonSystemItem: .FixedSpace, target: nil, action: nil)
-        fixedWidthBarItem.width = 10
-        
-        let keyboardToolbarItems = [fixedWidthBarItem, UIBarButtonItem(image: UIImage(named: "ToolbarGoBackward"), style: .Plain, target: self, action: #selector(VehicleDetailsViewController.didPressKeyboardBackButton(_:))), fixedWidthBarItem, UIBarButtonItem(image: UIImage(named: "ToolbarGoForward"), style: .Plain, target: self, action: #selector(VehicleDetailsViewController.didPressKeyboardForwardButton(_:))), UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)]
-        let yearToolbarItems = [fixedWidthBarItem, UIBarButtonItem(image: UIImage(named: "ToolbarGoBackward"), style: .Plain, target: self, action: #selector(VehicleDetailsViewController.didPressKeyboardBackButton(_:))), fixedWidthBarItem, UIBarButtonItem(image: UIImage(named: "ToolbarGoForward"), style: .Plain, target: self, action: #selector(VehicleDetailsViewController.didPressKeyboardForwardButton(_:))), UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil), UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(VehicleDetailsViewController.didPressHideKeyboardButton(_:)))]
-        
-        let textfieldToolbar = UIToolbar(frame: CGRectMake(0, 0, Constants.Size.ScreenWidth.floatValue, 44))
-        textfieldToolbar.items = keyboardToolbarItems
-        
-        let yearTextfieldToolbar = UIToolbar(frame: CGRectMake(0, 0, Constants.Size.ScreenWidth.floatValue, 44))
-        yearTextfieldToolbar.items = yearToolbarItems
-        
-        self.yearTextField.inputAccessoryView = yearTextfieldToolbar
-        attributesDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName : UIFont.systemFontOfSize(18.0)]
-        self.yearTextField.attributedPlaceholder = NSAttributedString(string: "Year", attributes: attributesDictionary)
-        
-        self.makeTextField.inputAccessoryView = textfieldToolbar
-        attributesDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName : UIFont.systemFontOfSize(18.0)]
-        self.makeTextField.attributedPlaceholder = NSAttributedString(string: "Make", attributes: attributesDictionary)
-        
-        self.modelTextField.inputAccessoryView = textfieldToolbar
-        attributesDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName : UIFont.systemFontOfSize(18.0)]
-        self.modelTextField.attributedPlaceholder = NSAttributedString(string: "Model", attributes: attributesDictionary)
-        
-        self.engineSizeTextField.inputAccessoryView = textfieldToolbar
-        attributesDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName : UIFont.systemFontOfSize(18.0)]
-        self.engineSizeTextField.attributedPlaceholder = NSAttributedString(string: "Engine Size", attributes: attributesDictionary)
-        
-        self.partTextField.inputAccessoryView = textfieldToolbar
-        attributesDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName : UIFont.systemFontOfSize(18.0)]
-        self.partTextField.attributedPlaceholder = NSAttributedString(string: "Part", attributes: attributesDictionary)
+        //get years
+        self.years = self.getYears()
         
     }
     
@@ -80,71 +66,129 @@ class VehicleDetailsViewController: BaseViewController, UITextFieldDelegate {
         super.viewWillAppear(animated)
         
         self.navigationController?.navigationBarHidden = false
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(VehicleDetailsViewController.onKeyboardFrameChange(_:)), name: UIKeyboardWillChangeFrameNotification, object: nil)
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillChangeFrameNotification, object: nil)
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
+    private func setUpTextFields() {
+        
+        // keyBoard
+        let textfieldToolbar = UIToolbar(frame: CGRectMake(0, 0, Constants.Size.ScreenWidth.floatValue, 44))
+        textfieldToolbar.items = [UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil), UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(NeedTireViewController.didPressHideKeyboardButton(_:)))]
+        
+        // year textField
+        
+        var attributesDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName : UIFont.systemFontOfSize(18.0)]
+        self.partTextField.attributedPlaceholder = NSAttributedString(string: "Part", attributes: attributesDictionary)
+        self.yearTextField.attributedPlaceholder = NSAttributedString(string: "Year", attributes: attributesDictionary)
+        self.yearPickerView = UIPickerView()
+        self.yearPickerView.showsSelectionIndicator = true
+        self.yearPickerView.delegate = self
+        self.yearPickerView.dataSource = self
+        self.yearPickerView.tag = PickerType.YearPicker.rawValue
+        self.yearTextField.inputView = self.yearPickerView
+        
+        let yearTextFieldToolbar = UIToolbar(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, 44))
+        yearTextFieldToolbar.items = [UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil), UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(VehicleDetailsViewController.didPressYearTextFieldDone(_:)))]
+        self.yearTextField.inputAccessoryView = yearTextFieldToolbar
+        
+        // make textField
+        attributesDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName : UIFont.systemFontOfSize(18.0)]
+        self.makeTextField.attributedPlaceholder = NSAttributedString(string: "Make", attributes: attributesDictionary)
+        self.makePickerView = UIPickerView()
+        self.makePickerView.showsSelectionIndicator = true
+        self.makePickerView.delegate = self
+        self.makePickerView.dataSource = self
+        self.makePickerView.tag = PickerType.MakePicker.rawValue
+        self.makeTextField.inputView = self.makePickerView
+        
+        let makeTextFieldToolbar = UIToolbar(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, 44))
+        makeTextFieldToolbar.items = [UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil), UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(VehicleDetailsViewController.didPressMakePickerViewDone(_:)))]
+        self.makeTextField.inputAccessoryView = makeTextFieldToolbar
+        
+        // model textField
+        attributesDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName : UIFont.systemFontOfSize(18.0)]
+        self.modelTextField.attributedPlaceholder = NSAttributedString(string: "Model", attributes: attributesDictionary)
+        self.modelPickerView = UIPickerView()
+        self.modelPickerView.showsSelectionIndicator = true
+        self.modelPickerView.delegate = self
+        self.modelPickerView.dataSource = self
+        self.modelPickerView.tag = PickerType.ModelPicker.rawValue
+        self.modelTextField.inputView = self.modelPickerView
+        
+        let modelTextFieldToolbar = UIToolbar(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, 44))
+        modelTextFieldToolbar.items = [UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil), UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(VehicleDetailsViewController.didPressModelPickerViewDone(_:)))]
+        self.modelTextField.inputAccessoryView = modelTextFieldToolbar
+        
+
+        // engine size textField
+        attributesDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName : UIFont.systemFontOfSize(18.0)]
+        self.engineSizeTextField.attributedPlaceholder = NSAttributedString(string: "Engine", attributes: attributesDictionary)
+        self.enginePickerView = UIPickerView()
+        self.enginePickerView.showsSelectionIndicator = true
+        self.enginePickerView.delegate = self
+        self.enginePickerView.dataSource = self
+        self.enginePickerView.tag = PickerType.EnginePicker.rawValue
+        self.engineSizeTextField.inputView = self.enginePickerView
+        
+        let engineSizeTextFieldToolbar = UIToolbar(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, 44))
+        engineSizeTextFieldToolbar.items = [UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil), UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(VehicleDetailsViewController.didPressEngineSizePickerViewDone(_:)))]
+        self.engineSizeTextField.inputAccessoryView = engineSizeTextFieldToolbar
+        
+        self.submitResultButton.layer.borderColor = UIColor.whiteColor().CGColor
+        
+    }
+    
+    private func getYears() -> [String] {
+        var years = [String]()
+        let todayDate = NSDate()
+        let calendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
+        let currentYear = calendar.components(.Year, fromDate: todayDate)
+        
+        for var i = 1953; i <= currentYear.year; i += 1 {
+            years.append(String(i))
+        }
+        years.sortInPlace(>)
+        years.insert("Year", atIndex: 0)
+        //        self.yearTextField.text = "2016"
+        
+        // get default makes
+        
+        if "" != self.yearTextField.text &&  4 <= self.yearTextField.text?.characters.count {
+            
+            if 0 != makes.count {
+                self.makes.removeAll()
+            }
+            
+            Network.sharedInstance.getMakeFromYear(self.yearTextField.text!) { (data) -> Void in
+                
+                if (nil != data) {
+                    debugPrint("\(data)")
+                    self.makes = data!
+                    self.yearTextField.resignFirstResponder()
+                } else {
+                    CommonUtils.showAlert("Error", message: "Please correct searched fields")
+                }
+            }
+        }
+        
+        return years
+    }
+    
     // MARK: - IBActions
     
-    func didPressKeyboardBackButton(sender: UIBarButtonItem) {
-        
-        switch self.selectedTextfieldType {
-        case .Make:
-            self.yearTextField.becomeFirstResponder()
-        case .Model:
-            self.makeTextField.becomeFirstResponder()
-        case .EngineSize:
-            self.modelTextField.becomeFirstResponder()
-        case .Part:
-            self.engineSizeTextField.becomeFirstResponder()
-        default:
-            debugPrint("Not supported")
-        }
-    }
-    
-    func didPressKeyboardForwardButton(sender: UIBarButtonItem) {
-        
-        switch self.selectedTextfieldType {
-        case .Year:
-            self.makeTextField.becomeFirstResponder()
-        case .Make:
-            self.modelTextField.becomeFirstResponder()
-        case .Model:
-            self.engineSizeTextField.becomeFirstResponder()
-        case .EngineSize:
-            self.partTextField.becomeFirstResponder()
-        default:
-            debugPrint("Not supported")
-        }
-    }
-    
-    func didPressHideKeyboardButton(sender: UIBarButtonItem) {
-        
-        if .Year == self.selectedTextfieldType {
-            self.yearTextField.resignFirstResponder()
-        }
-    }
-    
     @IBAction func didPressSubmitButton(sender: UIButton) {
-        if "" == self.yearTextField.text {
+        if "" == self.yearTextField.text && "Year" == self.yearTextField.text{
             self.showNotificationAlertWithTitle("Please enter Year", message: nil, cancelButtonTitle: "OK", actionHandler: { (_) -> Void in
                 self.yearTextField.becomeFirstResponder()
             })
-        } else if "" == self.makeTextField.text {
+        } else if "" == self.makeTextField.text && "Make" == self.makeTextField.text {
             self.showNotificationAlertWithTitle("Please enter Make", message: nil, cancelButtonTitle: "OK", actionHandler: { (_) -> Void in
                 self.makeTextField.becomeFirstResponder()
             })
-        } else if "" == self.modelTextField.text {
+        } else if "" == self.modelTextField.text && "Model" == self.modelTextField.text {
             self.showNotificationAlertWithTitle("Please enter Model", message: nil, cancelButtonTitle: "OK", actionHandler: { (_) -> Void in
                 self.modelTextField.becomeFirstResponder()
             })
@@ -159,6 +203,9 @@ class VehicleDetailsViewController: BaseViewController, UITextFieldDelegate {
             var engineSize: String = ""
             if let engineSizeString = self.engineSizeTextField.text{
                 engineSize = engineSizeString
+            }
+            if engineSize == "Engine"{
+                engineSize = ""
             }
             let part = self.partTextField.text as String!
             CommonUtils.showProgress(self.view, label: "Reading data...")
@@ -181,29 +228,98 @@ class VehicleDetailsViewController: BaseViewController, UITextFieldDelegate {
         }
     }
     
-    // MARK: - Private Methods
-    
-    private func changeTableOffset() {
-        
-        let statusNavigationBarHeight: CGFloat = 64
-        let textfieldYHeight = self.selectedTextfieldFrame.origin.y + self.selectedTextfieldFrame.size.height
-        let nonKeyboardHeight = Constants.Size.ScreenHeight.floatValue - self.keyboardHeight - statusNavigationBarHeight
-        if textfieldYHeight > nonKeyboardHeight {
-            
-            self.table.setContentOffset(CGPointMake(0, textfieldYHeight - nonKeyboardHeight - statusNavigationBarHeight + 10), animated: true)
-        }
+    func didPressYearTextFieldDone(sender: UIBarButtonItem) {
+        self.yearTextField.resignFirstResponder()
     }
     
-    private func enableDisableButtonsInTextfield(textField: UITextField) {
+    func didPressMakePickerViewDone(sender: UIBarButtonItem) {
+        self.makeTextField.resignFirstResponder()
+    }
+    
+    func didPressModelPickerViewDone(sender: UIBarButtonItem) {
+        self.modelTextField.resignFirstResponder()
+    }
+    
+    func didPressEngineSizePickerViewDone(sender: UIBarButtonItem) {
+        self.engineSizeTextField.resignFirstResponder()
+    }
+    
+    //MARK: - UIPickerViewDataSource and UIPickerViewDelegate Methods
+    
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
-        if let toolbar = textField.inputAccessoryView as? UIToolbar, type = TextfieldType(rawValue: textField.tag) {
+        var returnValue = 0
+        
+        switch(pickerView.tag) {
             
-            if let backButton = toolbar.items?[1] {
-                backButton.enabled = TextfieldType.Year != type
+        case PickerType.YearPicker.rawValue:
+            returnValue = self.years.count
+        case PickerType.MakePicker.rawValue:
+            returnValue = self.makes.count
+        case PickerType.ModelPicker.rawValue:
+            returnValue = self.models.count
+        case PickerType.EnginePicker.rawValue:
+            returnValue = self.engines.count
+        default:
+            returnValue = 0
+        }
+        
+        return returnValue
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        var returnValue: String = ""
+        
+        switch(pickerView.tag) {
+            
+        case PickerType.YearPicker.rawValue:
+            returnValue = self.years[row]
+        case PickerType.MakePicker.rawValue:
+            if 0 != self.makes.count {
+                returnValue = self.makes[row]
             }
-            if let forwardButton = toolbar.items?[4] {
-                forwardButton.enabled = TextfieldType.Part != type
+            
+        case PickerType.ModelPicker.rawValue:
+            if 0 != self.models.count {
+                returnValue = self.models[row]
             }
+        case PickerType.EnginePicker.rawValue:
+            if 0 != self.engines.count {
+                returnValue = self.engines[row]
+            }
+        default:
+            returnValue = ""
+        }
+        
+        return returnValue
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        switch(pickerView.tag) {
+            
+        case PickerType.YearPicker.rawValue:
+            self.yearTextField.text = self.years[row]
+        case PickerType.MakePicker.rawValue:
+            if 0 != self.makes.count {
+                self.makeTextField.text = self.makes[row]
+            }
+        case PickerType.ModelPicker.rawValue:
+            
+            if 0 != self.models.count {
+                self.modelTextField.text = self.models[row]
+            }
+        case PickerType.EnginePicker.rawValue:
+            
+            if 0 != self.engines.count {
+                self.engineSizeTextField.text = self.engines[row]
+            }
+        default:
+            break
         }
     }
     
@@ -211,40 +327,202 @@ class VehicleDetailsViewController: BaseViewController, UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
         
-        if let type = TextfieldType(rawValue: textField.tag) {
-            self.selectedTextfieldType = type
+        var fillChecker: Bool = true
+        
+        switch(textField.tag) {
+            
+        case TextfieldType.Year.rawValue:
+            debugPrint("year")
+        case TextfieldType.Make.rawValue:
+            
+            if "" == self.yearTextField.text || self.yearTextField.text == "Year"{
+                CommonUtils.showAlert("Error", message: "Please fill the year field")
+                fillChecker = false
+            }
+            
+        case TextfieldType.Model.rawValue:
+            
+            if ("" == self.yearTextField.text && "" == self.makeTextField.text) || ("Year" == self.yearTextField.text && "Make" == self.makeTextField.text) {
+                CommonUtils.showAlert("Error", message: "Please fill the year and make field")
+                fillChecker = false
+                
+            } else if "" == self.yearTextField.text  || self.yearTextField.text == "Year"{
+                CommonUtils.showAlert("Error", message: "Please fill the year field")
+                fillChecker = false
+            } else if "" == self.makeTextField.text  || self.makeTextField.text == "Make"{
+                CommonUtils.showAlert("Error", message: "Please fill the make field")
+                fillChecker = false
+            }
+            
+        case TextfieldType.EngineSize.rawValue:
+            if ("" == self.yearTextField.text && "" == self.makeTextField.text && "" == self.modelTextField.text) || ("Year" == self.yearTextField.text && "Make" == self.makeTextField.text && "Model" == self.modelTextField.text) {
+                CommonUtils.showAlert("Error", message: "Please fill the year make and model field")
+                fillChecker = false
+                
+            }
+            else if ("" == self.makeTextField.text && "" == self.modelTextField.text) || ("Make" == self.makeTextField.text && "Model" == self.modelTextField.text) {
+                CommonUtils.showAlert("Error", message: "Please fill the make and model field")
+                fillChecker = false
+                
+            }
+            else if "" == self.makeTextField.text  || self.makeTextField.text == "Year"{
+                CommonUtils.showAlert("Error", message: "Please fill the make field")
+                fillChecker = false
+            } else if "" == self.modelTextField.text  || self.modelTextField.text == "Make"{
+                CommonUtils.showAlert("Error", message: "Please fill the model field")
+                fillChecker = false
+            }
+        default:
+            break
         }
-        self.selectedTextfieldFrame = textField.frame
-        self.changeTableOffset()
-        self.enableDisableButtonsInTextfield(textField)
-        return true
+        self.animateTextField(textField, up: true)
+        return fillChecker
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
+        
         textField.resignFirstResponder()
         return true
     }
     
-    // MARK: - Keyboard Behavior
-    
-    func onKeyboardFrameChange(sender: NSNotification) {
+    func textFieldDidEndEditing(textField: UITextField) {
         
-        if let userInfo = sender.userInfo, keyboardFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue() {
+        switch(textField.tag) {
             
-            if keyboardFrame.origin.y < Constants.Size.ScreenHeight.floatValue {//Keyboard Up
+        case TextfieldType.Year.rawValue:
+            
+            let year = self.yearTextField.text
+            
+            if "" != year && "Year" != year && 4 <= year?.characters.count {
                 
-                self.table.scrollEnabled = false
-                self.keyboardHeight = keyboardFrame.size.height
-                self.changeTableOffset()
-            } else {//Keyboard Down
-                
-                self.table.scrollEnabled = true
-                self.keyboardHeight = 0
-                self.selectedTextfieldFrame = CGRectZero
-                self.selectedTextfieldType = .None
-                self.table.setContentOffset(CGPointMake(0, -64), animated: true)
+                if 0 != makes.count {
+                    self.makes.removeAll()
+                }
+                //Show Progress Hud
+                CommonUtils.showProgress(self.view, label: "Getting Data...")
+                Network.sharedInstance.getMakeFromYear(self.yearTextField.text!) { (data) -> Void in
+                    //Hide Progress Hud
+                    dispatch_async(dispatch_get_main_queue(), {
+                        CommonUtils.hideProgress()
+                    })
+                    if (nil != data) {
+                        debugPrint("\(data)")
+                        self.makes = data!
+                        self.makes.insert("Make", atIndex: 0)
+                        self.yearTextField.resignFirstResponder()
+                        self.makePickerView.reloadAllComponents()
+                        self.shouldCleanTextFields(forTag: textField.tag) // clean textFields
+                    } else {
+                        CommonUtils.showAlert("Error", message: "Please correct searched fields")
+                    }
+                }
+            } else {
             }
+            
+        case TextfieldType.Make.rawValue:
+            
+            let year = self.yearTextField.text
+            let make = self.makeTextField.text
+            
+            if "" != make && "" != year && "Make" != make && "Year" != year {
+                
+                if 0 != models.count {
+                    self.models.removeAll()
+                }
+                //Show Progress Hud
+                CommonUtils.showProgress(self.view, label: "Getting Data...")
+                Network.sharedInstance.getModel(year!, make: make!, completion: { (data) -> Void in
+                    //Hide Progress Hud
+                    dispatch_async(dispatch_get_main_queue(), {
+                        CommonUtils.hideProgress()
+                    })
+                    if (nil != data) {
+                        debugPrint("\(data)")
+                        self.models = data!
+                        self.models.insert("Model", atIndex: 0)
+                        self.makeTextField.resignFirstResponder()
+                        self.modelPickerView.reloadAllComponents()
+                        self.shouldCleanTextFields(forTag: textField.tag) // clean textFields
+                    } else {
+                        CommonUtils.showAlert("Error", message: "Please correct searched fields")
+                    }
+                })
+            } else {
+            }
+        
+        case TextfieldType.Model.rawValue:
+            
+            let year = self.yearTextField.text
+            let make = self.makeTextField.text
+            let model = self.modelTextField.text
+            
+            if "" != make && "" != year && "Make" != make && "Year" != year && "" != model && "Model" != model{
+                
+                if 0 != engines.count {
+                    self.engines.removeAll()
+                }
+                //Show Progress Hud
+                CommonUtils.showProgress(self.view, label: "Getting Data...")
+                Network.sharedInstance.getEngines(year!, make: make!, model: model!, completion: { (data) -> Void in
+                    //Hide Progress Hud
+                    dispatch_async(dispatch_get_main_queue(), {
+                        CommonUtils.hideProgress()
+                    })
+                    if (nil != data) {
+                        print("engine", data)
+                        self.engines = data!
+                        self.engines.insert("Engine", atIndex: 0)
+                        self.engineSizeTextField.resignFirstResponder()
+                        self.enginePickerView.reloadAllComponents()
+                        self.shouldCleanTextFields(forTag: textField.tag) // clean textFields
+                    } else {
+                        CommonUtils.showAlert("Error", message: "Please correct searched fields")
+                    }
+                })
+            } else {
+            }
+            
+        default:
+            break
+            
         }
+        self.animateTextField(textField, up: false)
     }
     
+    private func shouldCleanTextFields(forTag tag: Int) {
+        
+        switch(tag) {
+        case TextfieldType.Year.rawValue:
+            self.makeTextField.text = ""
+            self.modelTextField.text = ""
+            self.engineSizeTextField.text = ""
+            
+        case TextfieldType.Make.rawValue:
+            self.modelTextField.text = ""
+            self.engineSizeTextField.text = ""
+            
+        case TextfieldType.Model.rawValue:
+            self.engineSizeTextField.text = ""
+            
+        default:
+            break
+        }
+    }
+    func animateTextField(textField: UITextField, up: Bool){     // move view up or down if textfield is hidden by keyboard.
+        let movementDistance = 80
+        let movementDuration = 0.3
+        
+        let movement = (up ? -movementDistance : movementDistance)
+        let movement_float = CGFloat(movement)
+        
+        let frame = textField.frame
+        
+        if (frame.origin.y > self.view.frame.size.height / 2){
+            UIView.beginAnimations("animate", context: nil)
+            UIView.setAnimationBeginsFromCurrentState(true)
+            UIView.setAnimationDuration(movementDuration)
+            self.view.frame = CGRectOffset(self.view.frame, 0, movement_float)
+            UIView.commitAnimations()
+        }
+    }
 }

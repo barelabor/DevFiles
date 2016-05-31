@@ -38,6 +38,9 @@ class Network: NSObject {
     // Get Features URL String
     static let getFeaturesURLString = baseURLString + "barelabor/api/index.php?method=getFeatures"
     
+    // Get Engine URL String
+    static let getEnginesURLString = baseURLString + "barelabor/api/index.php?method=getEngine"
+    
     // Get price by vehicle URL String
     static let getVehiclePrice = baseURLString + "barelabor/api/index.php?method=getPriceByVehicle"
     
@@ -353,6 +356,39 @@ class Network: NSObject {
         }
     }
     
+    /**
+     GET FEATURES
+     
+     - parameter year From year's make search
+     - parameter make Get's make from year
+     - parameter model Get's model from make
+     */
+    
+    func getEngines(year: String, make: String, model: String, completion: (data: [String]?) -> Void) {
+        
+        let url = Network.getEnginesURLString
+        let params = ["year":year,
+                      "make":make,
+                      "model":model]
+        
+        post(url, parameters: params) { (data) -> () in
+            
+            if (nil != data) {
+                var returnArray: [String] = []
+                
+                let engines = data as! NSDictionary
+                
+                for items in engines["items"] as! [String] {
+                    returnArray.append(items)
+                }
+                completion(data: returnArray)
+            } else {
+                completion(data: nil)
+            }
+        }
+    }
+    
+
     /**
      GET PRICE BY VEHICLE
      

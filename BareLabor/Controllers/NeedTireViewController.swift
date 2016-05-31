@@ -190,7 +190,7 @@ class NeedTireViewController: BaseViewController, UITextFieldDelegate, UIPickerV
         let year = self.yearTextField.text
         let make = self.makeTextField.text
         let model = self.modelTextField.text
-        let feature = self.featuresTextField.text
+        var feature = self.featuresTextField.text
         let quantityVehicle = self.qty1TextField.text
         
         let width = self.size1TextField.text
@@ -204,8 +204,11 @@ class NeedTireViewController: BaseViewController, UITextFieldDelegate, UIPickerV
             
             mixpanel.track("Vehicle Submit clicked")
             
-            if ("" != year && "" != make && "" != model && "" != feature && "" != quantityVehicle) {
+            if ("" != year && "" != make && "" != model && "" != quantityVehicle && "Year" != year && "Make" != make && "Model" != model) {
                 CommonUtils.showProgress(self.view, label: "Reading data...")
+                if (feature == "Features") {
+                    feature = ""
+                }
                 Network.sharedInstance.getPriceByVehicle(year!, make: make!, model: model!, feature: feature!, completion: { (data, ratingArray) -> Void in
                     self.submitButtone.enabled = true;
                     dispatch_async(dispatch_get_main_queue(), {
@@ -445,8 +448,8 @@ class NeedTireViewController: BaseViewController, UITextFieldDelegate, UIPickerV
             years.append(String(i))
         }
         years.sortInPlace(>)
-        
-        self.yearTextField.text = "2016"
+        years.insert("Year", atIndex: 0)
+//        self.yearTextField.text = "2016"
         
         // get default makes
         
@@ -730,38 +733,38 @@ class NeedTireViewController: BaseViewController, UITextFieldDelegate, UIPickerV
             debugPrint("year")
         case TextfieldType.Make.rawValue:
             
-            if "" == self.yearTextField.text {
+            if "" == self.yearTextField.text || self.yearTextField.text == "Year"{
                 self.showAlertWithMessage("Please fill the year field")
                 fillChecker = false
             }
             
         case TextfieldType.Model.rawValue:
             
-            if "" == self.yearTextField.text && "" == self.makeTextField.text {
+            if ("" == self.yearTextField.text && "" == self.makeTextField.text) || ("Year" == self.yearTextField.text && "Make" == self.makeTextField.text) {
                 self.showAlertWithMessage("Please fill the year and make fields")
                 fillChecker = false
                 
-            } else if "" == self.yearTextField.text {
+            } else if "" == self.yearTextField.text  || self.yearTextField.text == "Year"{
                 self.showAlertWithMessage("Please fill the year field")
                 fillChecker = false
-            } else if "" == self.makeTextField.text {
+            } else if "" == self.makeTextField.text  || self.makeTextField.text == "Make"{
                 self.showAlertWithMessage("Please fill the make field")
                 fillChecker = false
             }
             
         case TextfieldType.Features.rawValue:
             
-            if "" == self.yearTextField.text && "" == self.makeTextField.text && "" == self.modelTextField.text {
+            if ("" == self.yearTextField.text && "" == self.makeTextField.text && "" == self.modelTextField.text) || ("Year" == self.yearTextField.text && "Make" == self.makeTextField.text && "Model" == self.modelTextField.text){
                 self.showAlertWithMessage("Please fill the and year, make and model fields")
                 fillChecker = false
                 
-            } else if "" == self.yearTextField.text {
+            } else if "" == self.yearTextField.text || self.yearTextField.text == "Year"{
                 self.showAlertWithMessage("Please fill the year field")
                 fillChecker = false
-            } else if "" == self.makeTextField.text {
+            } else if "" == self.makeTextField.text || self.makeTextField.text == "Make"{
                 self.showAlertWithMessage("Please fill the make field")
                 fillChecker = false
-            } else if "" == self.modelTextField.text {
+            } else if "" == self.modelTextField.text || self.modelTextField.text == "Model"{
                 self.showAlertWithMessage("Please fill the model field")
                 fillChecker = false
             }
@@ -813,19 +816,24 @@ class NeedTireViewController: BaseViewController, UITextFieldDelegate, UIPickerV
             
         case TextfieldType.Year.rawValue:
             
-            let year = self.yearTextField.text
+        let year = self.yearTextField.text
+
+        if "" != year && "Year" != year && 4 <= year?.characters.count {
             
-            if "" != year &&  4 <= year?.characters.count {
-                
-                if 0 != makes.count {
-                    self.makes.removeAll()
-                }
-                
-                Network.sharedInstance.getMakeFromYear(self.yearTextField.text!) { (data) -> Void in
-                    
+            if 0 != makes.count {
+                self.makes.removeAll()
+            }
+            //Show Progress Hud
+            CommonUtils.showProgress(self.view, label: "Getting Data...")
+            Network.sharedInstance.getMakeFromYear(self.yearTextField.text!) { (data) -> Void in
+                //Hide Progress Hud
+                    dispatch_async(dispatch_get_main_queue(), {
+                        CommonUtils.hideProgress()
+                    })
                     if (nil != data) {
                         debugPrint("\(data)")
                         self.makes = data!
+                        self.makes.insert("Make", atIndex: 0)
                         self.yearTextField.resignFirstResponder()
                         self.makePickerView.reloadAllComponents()
                         self.shouldCleanTextFields(forTag: textField.tag) // clean textFields
@@ -841,17 +849,22 @@ class NeedTireViewController: BaseViewController, UITextFieldDelegate, UIPickerV
             let year = self.yearTextField.text
             let make = self.makeTextField.text
             
-            if "" != make && "" != year {
+            if "" != make && "" != year && "Make" != make && "Year" != year {
                 
                 if 0 != models.count {
                     self.models.removeAll()
                 }
-                
+                //Show Progress Hud
+                CommonUtils.showProgress(self.view, label: "Getting Data...")
                 Network.sharedInstance.getModel(year!, make: make!, completion: { (data) -> Void in
-                    
+                    //Hide Progress Hud
+                    dispatch_async(dispatch_get_main_queue(), {
+                        CommonUtils.hideProgress()
+                    })
                     if (nil != data) {
                         debugPrint("\(data)")
                         self.models = data!
+                        self.models.insert("Model", atIndex: 0)
                         self.makeTextField.resignFirstResponder()
                         self.modelPickerView.reloadAllComponents()
                         self.shouldCleanTextFields(forTag: textField.tag) // clean textFields
@@ -870,17 +883,22 @@ class NeedTireViewController: BaseViewController, UITextFieldDelegate, UIPickerV
             let make = self.makeTextField.text
             let model = self.modelTextField.text
             
-            if "" != year && "" != make && "" != model {
+            if "" != year && "" != make && "" != model && "Year" != year && "Make" != make && "Model" != model{
                 
                 if 0 != features.count {
                     self.features.removeAll()
                 }
-                
+                //Show Progress Hud
+                CommonUtils.showProgress(self.view, label: "Getting Data...")
                 Network.sharedInstance.getFeatures(year!, make: make!, model: model!, completion: { (data) -> Void in
-                    
+                    //Hide Progress Hud
+                    dispatch_async(dispatch_get_main_queue(), {
+                        CommonUtils.hideProgress()
+                    })
                     if (nil != data) {
                         debugPrint("\(data)")
                         self.features = data!
+                        self.features.insert("Features", atIndex: 0)
                         self.modelTextField.resignFirstResponder()
                         self.featuresPickerView.reloadAllComponents()
                         self.shouldCleanTextFields(forTag: textField.tag) // clean textFields
