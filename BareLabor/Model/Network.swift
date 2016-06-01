@@ -35,6 +35,13 @@ class Network: NSObject {
     // Get Model URL String
     static let getModelURLString = baseURLString + "barelabor/api/index.php?method=getModel"
     
+    
+    // Get Make from Year URL String
+    static let getRepairMakeURLString = baseURLString + "barelabor/api/index.php?method=getRepairMake"
+    
+    // Get Model URL String
+    static let getRepairModelURLString = baseURLString + "barelabor/api/index.php?method=getRepairModel"
+    
     // Get Features URL String
     static let getFeaturesURLString = baseURLString + "barelabor/api/index.php?method=getFeatures"
     
@@ -293,6 +300,36 @@ class Network: NSObject {
             }
         }
     }
+
+    /**
+     
+     GET MAKE for Repair
+     
+     - parameter year From year's make search
+     */
+    
+    func getRepairMakeFromYear(year: String, completion: (data:[String]?) -> Void) {
+        
+        let url = Network.getRepairMakeURLString
+        let params = ["year":year]
+        
+        post(url, parameters: params) { (data) -> () in
+            
+            if (nil != data) {
+                var returnArray: [String] = []
+                
+                let makes = data as! NSDictionary
+                
+                for items in makes["items"] as! [String] {
+                    returnArray.append(items)
+                }
+                completion(data: returnArray)
+            } else {
+                completion(data: nil)
+            }
+        }
+    }
+
     
     /**
      GET MODEL
@@ -306,6 +343,37 @@ class Network: NSObject {
         let url = Network.getModelURLString
         let params = ["year":year,
             "make":make]
+        
+        post(url, parameters: params) { (data) -> () in
+            
+            if (nil != data) {
+                var returnArray: [String] = []
+                
+                let models = data as! NSDictionary
+                
+                for items in models["items"] as! [String] {
+                    returnArray.append(items)
+                }
+                completion(data: returnArray)
+            } else {
+                completion(data: nil)
+            }
+        }
+    }
+    
+
+    /**
+     GET MODEL For Repair
+     
+     - parameter year From year's make search
+     - parameter make Get's make from year
+     */
+    
+    func getRepairModel(year: String, make: String, completion: (data: [String]?) -> Void) {
+        
+        let url = Network.getRepairModelURLString
+        let params = ["year":year,
+                      "make":make]
         
         post(url, parameters: params) { (data) -> () in
             

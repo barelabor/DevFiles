@@ -212,7 +212,7 @@
                                     <segue destination="Zub-c5-ex5" kind="push" id="McL-6Y-00z"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" tag="1113" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iPZ-nf-FEJ">
+                            <button opaque="NO" tag="1113" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iPZ-nf-FEJ">
                                 <rect key="frame" x="15" y="105" width="290" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="vE5-jb-cwo"/>
@@ -486,7 +486,7 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="C099B575-9D82-491D-880B-2CEDA05759C2" translatesAutoresizingMaskIntoConstraints="NO" id="NGP-Ov-3NL">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FE89A844-01A4-4B6B-93F0-BBC02E33FD5C" translatesAutoresizingMaskIntoConstraints="NO" id="NGP-Ov-3NL">
                                                     <rect key="frame" x="305" y="123" width="8" height="13"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="8" id="4xU-XH-Bz9"/>
@@ -3165,7 +3165,11 @@
     </scenes>
     <resources>
         <image name="Arrow" width="5" height="8"/>
-        <image name="C099B575-9D82-491D-880B-2CEDA05759C2" width="5" height="8">
+        <image name="ConfirmPassword" width="16" height="16"/>
+        <image name="Email" width="16" height="16"/>
+        <image name="EmptyCercle" width="18" height="18"/>
+        <image name="EngineSizeIcon" width="24" height="24"/>
+        <image name="FE89A844-01A4-4B6B-93F0-BBC02E33FD5C" width="5" height="8">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -3219,10 +3223,6 @@ CmEKZgpuCnEKdgqFCokKkAqYCqUKqgqsCq4Kswq7Cr4KwwrLCs4K4ArjCugAAAAAAAACAQAAAAAAAABB
 AAAAAAAAAAAAAAAAAAAK6g
 </mutableData>
         </image>
-        <image name="ConfirmPassword" width="16" height="16"/>
-        <image name="Email" width="16" height="16"/>
-        <image name="EmptyCercle" width="18" height="18"/>
-        <image name="EngineSizeIcon" width="24" height="24"/>
         <image name="FilledCircle" width="18" height="18"/>
         <image name="FilledLocationArrow" width="15" height="15"/>
         <image name="Location" width="28" height="28"/>

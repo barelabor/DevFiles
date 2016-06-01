@@ -400,7 +400,7 @@ class VehicleDetailsViewController: BaseViewController, UITextFieldDelegate, UIP
                 }
                 //Show Progress Hud
                 CommonUtils.showProgress(self.view, label: "Getting Data...")
-                Network.sharedInstance.getMakeFromYear(self.yearTextField.text!) { (data) -> Void in
+                Network.sharedInstance.getRepairMakeFromYear(self.yearTextField.text!) { (data) -> Void in
                     //Hide Progress Hud
                     dispatch_async(dispatch_get_main_queue(), {
                         CommonUtils.hideProgress()
@@ -431,7 +431,7 @@ class VehicleDetailsViewController: BaseViewController, UITextFieldDelegate, UIP
                 }
                 //Show Progress Hud
                 CommonUtils.showProgress(self.view, label: "Getting Data...")
-                Network.sharedInstance.getModel(year!, make: make!, completion: { (data) -> Void in
+                Network.sharedInstance.getRepairModel(year!, make: make!, completion: { (data) -> Void in
                     //Hide Progress Hud
                     dispatch_async(dispatch_get_main_queue(), {
                         CommonUtils.hideProgress()
